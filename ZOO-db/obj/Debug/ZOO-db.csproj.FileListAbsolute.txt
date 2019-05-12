@@ -1,0 +1,14 @@
+C:\Users\JoãoMonteiro\Documents\Aula8_Material\ContactsC#\ZOO-db\obj\Debug\ZOO-db.csprojAssemblyReference.cache
+C:\Users\JoãoMonteiro\Documents\Aula8_Material\ContactsC#\ZOO-db\obj\Debug\ZOO_db.Form1.resources
+C:\Users\JoãoMonteiro\Documents\Aula8_Material\ContactsC#\ZOO-db\obj\Debug\ZOO_db.Properties.Resources.resources
+C:\Users\JoãoMonteiro\Documents\Aula8_Material\ContactsC#\ZOO-db\obj\Debug\ZOO-db.csproj.GenerateResource.cache
+C:\Users\JoãoMonteiro\Documents\Aula8_Material\ContactsC#\ZOO-db\obj\Debug\ZOO-db.csproj.CoreCompileInputs.cache
+C:\Users\JoãoMonteiro\Desktop\ZOO-db\obj\Debug\ZOO_db.Form1.resources
+C:\Users\JoãoMonteiro\Desktop\ZOO-db\obj\Debug\ZOO_db.Properties.Resources.resources
+C:\Users\JoãoMonteiro\Desktop\ZOO-db\obj\Debug\ZOO-db.csproj.GenerateResource.cache
+C:\Users\JoãoMonteiro\Desktop\ZOO-db\obj\Debug\ZOO-db.csproj.CoreCompileInputs.cache
+C:\Users\JoãoMonteiro\Desktop\ZOO-db\bin\Debug\ZOO-db.exe.config
+C:\Users\JoãoMonteiro\Desktop\ZOO-db\bin\Debug\ZOO-db.exe
+C:\Users\JoãoMonteiro\Desktop\ZOO-db\bin\Debug\ZOO-db.pdb
+C:\Users\JoãoMonteiro\Desktop\ZOO-db\obj\Debug\ZOO-db.exe
+C:\Users\JoãoMonteiro\Desktop\ZOO-db\obj\Debug\ZOO-db.pdb
