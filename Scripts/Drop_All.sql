@@ -1,3 +1,11 @@
+alter table zoodb.zookeeper
+	drop constraint zookeeper_zone_fk
+go
+
+alter table zoodb.cashier
+	drop constraint cashier_shop_fk
+go
+
 drop table zoodb.employee;
 drop table zoodb.zookeeper;
 drop table zoodb.cashier;

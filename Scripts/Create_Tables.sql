@@ -25,14 +25,14 @@ create table zoodb.cashier(
 create table zoodb.zone(
 	zone_ID		char(9)		not null,
 	eco_system	varchar(15),
-	manager_ID	char(9)		not null,
+	manager_ID	char(9),
 	primary key	(zone_ID),
 	foreign key (manager_ID) references zoodb.zookeeper(emp_ID));
 
 create table zoodb.merchandise_shop(
 	shop_ID		char(9)		not null,
 	zone_ID		char(9)		not null,
-	manager_ID	char(9)		not null,
+	manager_ID	char(9),
 	primary key	(shop_ID),
 	foreign key (manager_ID) references zoodb.cashier(emp_ID));
 go
