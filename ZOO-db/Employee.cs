@@ -11,13 +11,13 @@ namespace ZOO_db
     [Serializable()]
     public class Employee
     {
-        private String _ID;
+        private Int32 _ID;
         private String _fname;
         private String _lname;
         private String _birthdate;
 
 
-        public String ID
+        public Int32 ID
         {
             get { return _ID; }
             set { _ID = value; }

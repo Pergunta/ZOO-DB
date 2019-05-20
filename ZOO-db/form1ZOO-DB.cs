@@ -67,7 +67,7 @@ namespace ZOO_db
                 return;
 
 
-            SqlCommand cmd = new SqlCommand("SELECT * FROM employee", cn);
+            SqlCommand cmd = new SqlCommand("SELECT * FROM zoodb.employee", cn);
             SqlDataReader reader = cmd.ExecuteReader();
             listBox1.Items.Clear();
             while (reader.Read())
