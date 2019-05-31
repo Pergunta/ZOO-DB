@@ -8,15 +8,15 @@ namespace ZOO_db
 {
     public class Zookeeper : Employee 
     {
-        private String emp_ID;
+        private Int32 emp_ID;
         private String specialty;
 
 
 
         public int em_ID
         {
-            get { return em; }
-            set { _ID = value; }
+            get { return emp_ID; }
+            set { ID = value; }
         }
 
 

@@ -12,3 +12,14 @@ C:\Users\JoãoMonteiro\Desktop\ZOO-db\bin\Debug\ZOO-db.exe
 C:\Users\JoãoMonteiro\Desktop\ZOO-db\bin\Debug\ZOO-db.pdb
 C:\Users\JoãoMonteiro\Desktop\ZOO-db\obj\Debug\ZOO-db.exe
 C:\Users\JoãoMonteiro\Desktop\ZOO-db\obj\Debug\ZOO-db.pdb
+D:\BD\ZOO-DB\ZOO-db\obj\Debug\ZOO-db.csprojAssemblyReference.cache
+D:\BD\ZOO-DB\ZOO-db\obj\Debug\ZOO_db.Form1.resources
+D:\BD\ZOO-DB\ZOO-db\obj\Debug\ZOO_db.Properties.Resources.resources
+D:\BD\ZOO-DB\ZOO-db\obj\Debug\ZOO-db.csproj.GenerateResource.cache
+D:\BD\ZOO-DB\ZOO-db\obj\Debug\ZOO-db.csproj.CoreCompileInputs.cache
+D:\BD\ZOO-DB\ZOO-db\obj\Debug\ZOO-db.exe
+D:\BD\ZOO-DB\ZOO-db\obj\Debug\ZOO-db.pdb
+D:\BD\ZOO-DB\ZOO-db\bin\Debug\ZOO-db.exe.config
+D:\BD\ZOO-DB\ZOO-db\bin\Debug\ZOO-db.exe
+D:\BD\ZOO-DB\ZOO-db\bin\Debug\ZOO-db.pdb
+D:\BD\ZOO-DB\ZOO-db\obj\Debug\ZOO_db.InsertEmployee.resources

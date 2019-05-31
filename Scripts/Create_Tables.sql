@@ -142,6 +142,3 @@ create table zoodb.sponsorship(
 	foreign key	(NIF) references zoodb.visitor(NIF),
 	foreign key	(animal_ID) references zoodb.animal(animal_ID));
 go
-
-alter TABLE zoodb.visitor
-add email varchar(40)
