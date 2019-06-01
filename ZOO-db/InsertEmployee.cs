@@ -62,7 +62,7 @@ namespace ZOO_db
             if (!verifySGBDConnection())
                 return;
 
-            SqlCommand cmd = new SqlCommand("insert into zoodb.zookeeper (emp_ID,speciality,zone ) VALUES (@emp_ID, @speciality, @zone);", cn);
+            SqlCommand cmd = new SqlCommand("insert into zoodb.zookeeper (emp_ID,speciality,birthdate ) VALUES (@emp_ID, @speciality, @birthdate);", cn);
             cmd.Parameters.AddWithValue("@emp_ID",currentEmployee );
             cmd.Parameters.AddWithValue("@speciality", Z.Speciality);
             cmd.Parameters.AddWithValue("@zone", Z.Zone);

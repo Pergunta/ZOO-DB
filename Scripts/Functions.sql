@@ -1,4 +1,6 @@
-create procedure zoodb.IUD_Vet(@fname varchar(15), @lname varchar(15), @license_ID char(9), @specialty varchar(20),@StatementType nvarchar(20) = '')
+--VETERINARIAN
+
+create procedure zoodb.InsertDelete_Vet(@fname varchar(15), @lname varchar(15), @license_ID char(9), @specialty varchar(20),@StatementType nvarchar(20) = '')
 as 
 	BEGIN  
 	IF @StatementType = 'Insert'  
@@ -22,35 +24,16 @@ go
 select * from zoodb.getVetList()
 go
 
-create function zoodb.getVet(@license_ID char(9)) returns table
+create function zoodb.getVet(@license_ID int) returns table
 as
 	return(
 	SELECT fname,lname,specialty FROM zoodb.veterinarian WHERE license_ID=@license_ID
 	);
 go
 
-CREATE TRIGGER zoodb.validateVet ON zoodb.veterinarian
-INSTEAD OF UPDATE,INSERT
+create function zoodb.getVetHC() returns table
 as
-begin
-	Select *
-	Into   #Temp
-	From   inserted
-
-	WHILE (SELECT count(*) FROM #Temp) >0
-	begin
-		DECLARE @license_ID as char(9);
-		SELECT TOP 1 @license_ID = license_ID FROM #Temp;
-		if  (SELECT count(*) FROM zoodb.veterinarian WHERE license_ID=@license_ID) > 0
-		begin
-			DELETE #TEMP WHERE license_ID=@license_ID;
-			RAISERROR('LICENSE_ID ALREADY EXISTS', 16, 1);
-		end
-		ELSE
-		begin
-			insert into zoodb.veterinarian SELECT * FROM #TEMP WHERE license_ID=@license_ID;
-			DELETE #TEMP WHERE license_ID=@license_ID;
-		end
-	end	
-end
+	return(
+	SELECT license_ID,fname,lname FROM zoodb.veterinarian
+	);
 go

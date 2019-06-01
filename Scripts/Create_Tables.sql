@@ -79,7 +79,7 @@ create table zoodb.animal(
 create table zoodb.veterinarian(
 	fname		varchar(15) not null,
 	lname		varchar(15) not null,
-	license_ID	char(9)		not null,
+	license_ID	int		not null,
 	specialty	varchar(20),
 	primary key	(license_ID));
 
@@ -87,13 +87,13 @@ create table zoodb.visitor(
 	fname		varchar(15) not null,
 	lname		varchar(15) not null,
 	email		varchar(20),
-	NIF			char(9)		not null,
+	NIF			int		not null,
 	primary key (NIF));
 
 create table zoodb.health_check(
 	hc_ID		INT IDENTITY(1,1),
 	hc_date		date		not null,
-	vet_ID		char(9)		not null,
+	vet_ID		int		not null,
 	patient_ID	INT,
 	primary key (hc_ID),
 	foreign key	(vet_ID) references zoodb.veterinarian(license_ID),
@@ -114,8 +114,8 @@ create table zoodb.product(
 	foreign key	(shop_ID) references zoodb.merchandise_shop(shop_ID));
 
 create table zoodb.purchase(
-	receipt		char(9)		not null,
-	NIF			char(9)		not null,
+	receipt		int		not null,
+	NIF			int		not null,
 	product_ID 	INT,
 	shop_ID		INT,
 	primary key (receipt),
@@ -132,12 +132,12 @@ create table zoodb.exhibit(
 
 create table zoodb.goes_to(
 	exhibit_ID	INT,
-	NIF			char(9)		not null,
+	NIF			int		not null,
 	foreign key	(exhibit_ID) references zoodb.exhibit(exhibit_ID),
 	foreign key	(NIF) references zoodb.visitor(NIF));
 
 create table zoodb.sponsorship(
-	NIF			char(9)		not null,
+	NIF			int		not null,
 	animal_ID	int,
 	foreign key	(NIF) references zoodb.visitor(NIF),
 	foreign key	(animal_ID) references zoodb.animal(animal_ID));
