@@ -14,7 +14,7 @@ namespace ZOO_db
         private Int32 _ID;
         private String _fname;
         private String _lname;
-        private String _birthdate;
+        private DateTime _birthdate;
 
 
         public Int32 ID
@@ -52,7 +52,7 @@ namespace ZOO_db
             }
         }
 
-        public String Birthdate
+        public DateTime Birthdate
         {
 
             get { return _birthdate; }
@@ -63,7 +63,7 @@ namespace ZOO_db
                     throw new Exception("Format for date YYYY-MM-DD ");
                     return;
                 }
-                _birthdate = "'" + value + "'";
+                _birthdate = value ;
             }
         }
 
@@ -77,7 +77,7 @@ namespace ZOO_db
         {
         }
 
-        public Employee(String Fname, String Lname, String birthdate) : base()
+        public Employee(String Fname, String Lname, DateTime birthdate) : base()
         {
             this.Fname = Fname;
             this.Lname = Lname;

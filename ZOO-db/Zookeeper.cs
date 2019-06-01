@@ -48,12 +48,12 @@ namespace ZOO_db
             }
         }
 
-        public Zookeeper(String Fname, String Lname, String Birthdate) : base(Fname, Lname, Birthdate)
+        public Zookeeper(String Fname, String Lname, DateTime Birthdate) : base(Fname, Lname, Birthdate)
         {
         }
 
 
-        public Zookeeper(String Fname, String Lname , String birthdate , String speciality,int zone) : base(Fname ,Lname , birthdate )
+        public Zookeeper(String Fname, String Lname , DateTime birthdate , String speciality,int zone) : base(Fname ,Lname , birthdate )
         {
             this.emp_ID = ID;
             this._speciality = speciality;

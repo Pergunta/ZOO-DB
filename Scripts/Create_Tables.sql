@@ -8,7 +8,7 @@ create table zoodb.employee(
 	fname		varchar(15)  NOT NULL,
 	lname		varchar(15) not null,
 	ID			INT	 IDENTITY(1,1)	,
-	birthdate	date,
+	birthdate	VARCHAR(20),
 	primary key (ID));
 
 create table zoodb.zookeeper(
@@ -142,3 +142,6 @@ create table zoodb.sponsorship(
 	foreign key	(NIF) references zoodb.visitor(NIF),
 	foreign key	(animal_ID) references zoodb.animal(animal_ID));
 go
+
+alter TABLE zoodb.visitor
+add email varchar(40)

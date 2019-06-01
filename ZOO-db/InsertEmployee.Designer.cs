@@ -44,6 +44,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.txtZone = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,7 +72,8 @@
             // confToolStripMenuItem
             // 
             this.confToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.backToolStripMenuItem});
+            this.backToolStripMenuItem,
+            this.loadToolStripMenuItem});
             this.confToolStripMenuItem.Name = "confToolStripMenuItem";
             this.confToolStripMenuItem.Size = new System.Drawing.Size(58, 24);
             this.confToolStripMenuItem.Text = "Menu";
@@ -79,7 +81,7 @@
             // backToolStripMenuItem
             // 
             this.backToolStripMenuItem.Name = "backToolStripMenuItem";
-            this.backToolStripMenuItem.Size = new System.Drawing.Size(115, 26);
+            this.backToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.backToolStripMenuItem.Text = "Back";
             this.backToolStripMenuItem.Click += new System.EventHandler(this.backToolStripMenuItem_Click);
             // 
@@ -180,6 +182,13 @@
             this.label5.TabIndex = 24;
             this.label5.Text = "Zone";
             // 
+            // loadToolStripMenuItem
+            // 
+            this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.loadToolStripMenuItem.Text = "Load";
+            this.loadToolStripMenuItem.Click += new System.EventHandler(this.LoadToolStripMenuItem_Click);
+            // 
             // InsertEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -227,5 +236,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox txtZone;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
     }
 }

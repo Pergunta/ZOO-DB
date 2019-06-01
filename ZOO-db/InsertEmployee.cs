@@ -43,12 +43,14 @@ namespace ZOO_db
         {
             if (!verifySGBDConnection())
                 return;
-           
-            SqlCommand cmd = new SqlCommand("insert into zoodb.employee (fname, lname, birthdate) VALUES (@fname, @lname, @birthdate);", cn);
-            cmd.Parameters.AddWithValue("@fname",E.Fname);
-            cmd.Parameters.AddWithValue("@lname", E.Lname);
-            cmd.Parameters.AddWithValue("@birthdate", E.Birthdate);
-
+            
+            
+             SqlCommand cmd = new SqlCommand("insert into zoodb.employee (fname, lname, birthdate) VALUES (@fname, @lname, @birthdate);", cn);
+             cmd.Parameters.AddWithValue("@fname", E.Fname);
+             cmd.Parameters.AddWithValue("@lname", E.Lname);
+             cmd.Parameters.AddWithValue("@birthdate", E.Birthdate);
+          
+          
         
             cmd.ExecuteNonQuery();
             cn.Close();
@@ -63,7 +65,7 @@ namespace ZOO_db
             SqlCommand cmd = new SqlCommand("insert into zoodb.zookeeper (emp_ID,speciality,zone ) VALUES (@emp_ID, @speciality, @zone);", cn);
             cmd.Parameters.AddWithValue("@emp_ID",currentEmployee );
             cmd.Parameters.AddWithValue("@speciality", Z.Speciality);
-            cmd.Parameters.AddWithValue("@birthdate", Z.Zone);
+            cmd.Parameters.AddWithValue("@zone", Z.Zone);
 
 
             cmd.ExecuteNonQuery();
@@ -88,7 +90,8 @@ namespace ZOO_db
             {
                 employee1.Fname = txtfname.Text;
                 employee1.Lname = txtlname.Text;
-                employee1.Birthdate = txtbirthdate.Text;
+                String[] date = txtbirthdate.Text.Split('-');
+                employee1.Birthdate = new DateTime(Int32.Parse(date[0]), int.Parse(date[1]), int.Parse(date[2]));
             }
             catch (Exception ex)
             {
@@ -103,7 +106,9 @@ namespace ZOO_db
             Employee employee1 = new Employee();
             try
             {
-                employee1 = new Employee(txtfname.Text, txtlname.Text, txtbirthdate.Text);
+                string[] date = txtbirthdate.Text.Split('-');
+                DateTime tt = new DateTime(Int32.Parse(date[0]), int.Parse(date[1]), int.Parse(date[2]));
+                employee1 = new Employee(txtfname.Text, txtlname.Text,tt );
 
             } catch (Exception ex)
             {
@@ -142,11 +147,37 @@ namespace ZOO_db
             employee1 = (Employee)listBox1.Items[currentEmployee];
             txtfname.Text = employee1.Fname;
             txtlname.Text = employee1.Lname;
-            txtbirthdate.Text = employee1.Birthdate;
+            txtbirthdate.Text = employee1.Birthdate.ToString("yyyy-mm-ddd");
 
 
         }
 
-    
+      
+        private void LoadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!verifySGBDConnection())
+                return;
+
+            SqlCommand cmd = new SqlCommand("SELECT * FROM zoodb.employee", cn);
+            SqlDataReader reader = cmd.ExecuteReader();
+            listBox1.Items.Clear();
+
+            while (reader.Read())
+            {
+                Employee E = new Employee();
+                E.Fname = reader["Fname"].ToString();
+                E.Lname = reader["Lname"].ToString();
+                string[] date = reader["Birthdate"].ToString().Split('-');
+                DateTime tt = new DateTime(Int32.Parse(date[0]), int.Parse(date[1]), int.Parse(date[2]));
+                E.Birthdate = tt;
+                listBox1.Items.Add(E);
+            }
+
+            cn.Close();
+
+
+            currentEmployee = 0;
+            ShowEmployee();
+        }
     }
 }

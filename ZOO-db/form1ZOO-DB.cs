@@ -38,5 +38,16 @@ namespace ZOO_db
             frm.Show();
             this.Hide();
         }
+
+        private void MerchShopToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new MerchShop();
+            frm.Location = this.Location;
+            frm.StartPosition = FormStartPosition.Manual;
+            frm.FormClosing += delegate { this.Show(); };
+            frm.Show();
+            this.Hide();
+
+        }
     }
 }

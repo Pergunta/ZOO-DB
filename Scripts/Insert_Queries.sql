@@ -19,7 +19,7 @@ select * from zoodb.zookeeper;
 
 --ADD MERCHANDISE_SHOP
 insert into zoodb.merchandise_shop ( zone_ID) VALUES
-( 1);
+(1);
 select * from zoodb.merchandise_shop;
 
 --ADD CASHIER

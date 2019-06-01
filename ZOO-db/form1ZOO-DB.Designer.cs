@@ -34,6 +34,7 @@
             this.loadEmployeesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
+            this.merchShopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,6 +54,7 @@
             this.confToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.veterinarianToolStripMenuItem,
             this.loadEmployeesToolStripMenuItem,
+            this.merchShopToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.confToolStripMenuItem.Name = "confToolStripMenuItem";
             this.confToolStripMenuItem.Size = new System.Drawing.Size(63, 24);
@@ -87,6 +89,13 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Toronto in 6";
             // 
+            // merchShopToolStripMenuItem
+            // 
+            this.merchShopToolStripMenuItem.Name = "merchShopToolStripMenuItem";
+            this.merchShopToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.merchShopToolStripMenuItem.Text = "Merch Shop";
+            this.merchShopToolStripMenuItem.Click += new System.EventHandler(this.MerchShopToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -111,6 +120,7 @@
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStripMenuItem veterinarianToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem merchShopToolStripMenuItem;
     }
 }
 
