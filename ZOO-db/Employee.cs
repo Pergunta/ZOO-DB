@@ -58,7 +58,7 @@ namespace ZOO_db
             get { return _birthdate; }
             set
             {
-                if (value == null || Convert.ToInt32(value.Substring(0, 4)) < 0 || Convert.ToInt32(value.Substring(0, 4)) > Convert.ToInt32(DateTime.Now.Year.ToString()) || value.Substring(4) != "-" || Convert.ToInt32(value.Substring(5, 7)) > 12 || Convert.ToInt32(value.Substring(5, 7)) < 0 || value.Substring(7) != "-" || Convert.ToInt32(value.Substring(8, 10)) > 31 || Convert.ToInt32(value.Substring(8, 10)) < 0)
+                if (value == null )
                 {
                     throw new Exception("Format for date YYYY-MM-DD ");
                     return;

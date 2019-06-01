@@ -37,20 +37,17 @@ namespace ZOO_db
             return cn.State == ConnectionState.Open;
         }
 
-        private void InsertEmployeeCmd(String fname, String lname, String birthdate)
+        private void InsertEmployeeCmd(Employee E)
         {
             if (!verifySGBDConnection())
                 return;
-
+           
             SqlCommand cmd = new SqlCommand("insert into zoodb.employee (fname, lname, birthdate) VALUES (@fname, @lname, @birthdate);", cn);
-            cmd.Parameters.Add("@fname", SqlDbType.VarChar, 15);
-            cmd.Parameters.Add("@lname", SqlDbType.VarChar, 15);
-            cmd.Parameters.Add("@birthdate", SqlDbType.Date);
+            cmd.Parameters.AddWithValue("@fname",E.Fname);
+            cmd.Parameters.AddWithValue("@lname", E.Lname);
+            cmd.Parameters.AddWithValue("@birthdate", E.Birthdate);
 
-            cmd.Parameters["@fname"].Value = fname;
-            cmd.Parameters["@lname"].Value = lname;
-            cmd.Parameters["@birthdate"].Value = birthdate;
-
+        
             cmd.ExecuteNonQuery();
             cn.Close();
 
@@ -68,7 +65,21 @@ namespace ZOO_db
 
         private void button1_Click(object sender, EventArgs e)
         {
-            InsertEmployeeCmd(txtfname.Text, txtlname.Text, txtbirthdate.Text);
+            Employee employee1 = new Employee();
+            try
+            {
+                employee1.Fname = txtfname.Text;
+                employee1.Lname = txtlname.Text;
+                employee1.Birthdate = txtbirthdate.Text;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+           
+            }
+            InsertEmployeeCmd(employee1);
         }
+
+       
     }
 }

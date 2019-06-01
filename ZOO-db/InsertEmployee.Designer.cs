@@ -38,13 +38,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtfname = new System.Windows.Forms.TextBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.txtbirthdate = new System.Windows.Forms.MaskedTextBox();
+            this.txtbirthdate = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(596, 215);
+            this.button1.Location = new System.Drawing.Point(606, 223);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(127, 23);
             this.button1.TabIndex = 0;
@@ -128,11 +128,10 @@
             // 
             // txtbirthdate
             // 
-            this.txtbirthdate.Location = new System.Drawing.Point(456, 215);
+            this.txtbirthdate.Location = new System.Drawing.Point(456, 224);
             this.txtbirthdate.Name = "txtbirthdate";
-            this.txtbirthdate.Size = new System.Drawing.Size(100, 22);
+            this.txtbirthdate.Size = new System.Drawing.Size(108, 22);
             this.txtbirthdate.TabIndex = 19;
-            this.txtbirthdate.Mask = "0000-00-00";
             // 
             // InsertEmployee
             // 
@@ -170,6 +169,6 @@
         private System.Windows.Forms.Label label2;
         internal System.Windows.Forms.TextBox txtfname;
         private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.MaskedTextBox txtbirthdate;
+        private System.Windows.Forms.TextBox txtbirthdate;
     }
 }
