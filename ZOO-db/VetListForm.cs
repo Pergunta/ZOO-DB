@@ -37,7 +37,7 @@ namespace ZOO_db
             if (!verifySGBDConnection())
                 return;
 
-            SqlCommand cmd = new SqlCommand("zoodb.IUD_Vet", cn){CommandType = CommandType.StoredProcedure};
+            SqlCommand cmd = new SqlCommand("zoodb.InsertDelete_Vet", cn){CommandType = CommandType.StoredProcedure};
             cmd.Parameters.AddWithValue("@fname",fname);
             cmd.Parameters.AddWithValue("@lname", lname);
             cmd.Parameters.AddWithValue("@license_ID", license_ID);
@@ -61,7 +61,7 @@ namespace ZOO_db
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                listBox1.Items.Add(reader.GetString(0) + " : " + reader.GetString(1) + " " + reader.GetString(2));
+                listBox1.Items.Add(reader.GetString(0) + ":" + reader.GetString(1) + " " + reader.GetString(2));
             }
 
             cn.Close();

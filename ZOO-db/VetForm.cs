@@ -12,14 +12,19 @@ namespace ZOO_db
 {
     public partial class VetForm : Form
     {
-        private String vet_ID;
-        private String vet_fname;
-        private String vet_lname;
+        private String vet_ID = "";
 
         public VetForm(String vet_string)
         {
-            
-            InitializeComponent(vet_string);
+            SplitLine(vet_string);
+            InitializeComponent();
+
+        }
+
+        private void SplitLine(String line)
+        {
+            string[] split = line.Split(':');
+            vet_ID = split[0];
         }
     }
 }

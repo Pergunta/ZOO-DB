@@ -4,14 +4,7 @@ as
 	IF @StatementType = 'Insert'  
 	BEGIN  
 	insert into zoodb.veterinarian (fname, lname, license_ID, specialty) values(@fname, @lname, @license_ID, @specialty)  
-	END  
-	IF @StatementType = 'Update'  
-	BEGIN  
-	UPDATE zoodb.veterinarian SET  
-	fname = fname, lname = lname, 
-	specialty = @specialty  
-	WHERE  license_ID = @license_ID 
-	END  
+	END   
 	else IF @StatementType = 'Delete'  
 	BEGIN  
 	DELETE FROM zoodb.veterinarian WHERE license_ID = @license_ID 
