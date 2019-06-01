@@ -13,6 +13,8 @@ namespace ZOO_db
 {
     public partial class InsertEmployee : Form
     {
+
+        private int currentEmployee;
         private SqlConnection cn = new SqlConnection("Data Source = tcp:mednat.ieeta.pt\\SQLSERVER,8101 ;" +
                                         "Initial Catalog = p8g8 ;" +
                                         "uid = p8g8 ;" +
@@ -53,6 +55,22 @@ namespace ZOO_db
 
         }
 
+        private void InsertZookeerperCmd(Zookeeper Z)
+        {
+            if (!verifySGBDConnection())
+                return;
+
+            SqlCommand cmd = new SqlCommand("insert into zoodb.zookeeper (emp_ID,speciality,zone ) VALUES (@emp_ID, @speciality, @zone);", cn);
+            cmd.Parameters.AddWithValue("@emp_ID",currentEmployee );
+            cmd.Parameters.AddWithValue("@speciality", Z.Speciality);
+            cmd.Parameters.AddWithValue("@birthdate", Z.Zone);
+
+
+            cmd.ExecuteNonQuery();
+            cn.Close();
+
+        }
+
         private void backToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var frm = new Form1();
@@ -80,6 +98,55 @@ namespace ZOO_db
             InsertEmployeeCmd(employee1);
         }
 
-       
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            Employee employee1 = new Employee();
+            try
+            {
+                employee1 = new Employee(txtfname.Text, txtlname.Text, txtbirthdate.Text);
+
+            } catch (Exception ex)
+            {
+                MessageBox.Show("Select Employee from left list");
+            }
+           
+            Zookeeper zookeeper1 = new Zookeeper(employee1.Fname, employee1.Lname, employee1.Birthdate);
+            try {
+                zookeeper1.Speciality = txtSpeciality.Text;
+                zookeeper1.Zone = Int32.Parse(txtZone.Text);
+
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            InsertZookeerperCmd(zookeeper1);
+
+        }
+
+        private void ListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedIndex > 0)
+            {
+                currentEmployee = listBox1.SelectedIndex;
+                ShowEmployee();
+            }
+
+        }
+
+
+        public void ShowEmployee()
+        {
+            if (listBox1.Items.Count == 0 | currentEmployee < 0)
+                return;
+            Employee employee1 = new Employee();
+            employee1 = (Employee)listBox1.Items[currentEmployee];
+            txtfname.Text = employee1.Fname;
+            txtlname.Text = employee1.Lname;
+            txtbirthdate.Text = employee1.Birthdate;
+
+
+        }
+
+    
     }
 }

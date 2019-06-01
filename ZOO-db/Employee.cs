@@ -31,7 +31,7 @@ namespace ZOO_db
             {
                 if (value == null | String.IsNullOrEmpty(value))
                 {
-                    throw new Exception("First Name can’t be empty");
+                    //throw new Exception("First Name can’t be empty");
                     return;
                 }
                 _fname = value;
