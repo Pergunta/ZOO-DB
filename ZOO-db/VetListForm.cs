@@ -70,11 +70,6 @@ namespace ZOO_db
 
         private void backToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var frm = new Form1();
-            frm.Location = this.Location;
-            frm.StartPosition = FormStartPosition.Manual;
-            frm.FormClosing += delegate { this.Show(); };
-            frm.Show();
             this.Close();
         }
 
@@ -112,7 +107,7 @@ namespace ZOO_db
             frm.StartPosition = FormStartPosition.Manual;
             frm.FormClosing += delegate { this.Show(); };
             frm.Show();
-            this.Hide();
+            this.Close();
         }
     }
 }

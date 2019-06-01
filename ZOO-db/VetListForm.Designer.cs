@@ -44,6 +44,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.txtspecialty = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -123,12 +124,11 @@
             // 
             // listBox1
             // 
-            this.listBox1.Dock = System.Windows.Forms.DockStyle.Left;
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 16;
-            this.listBox1.Location = new System.Drawing.Point(0, 28);
+            this.listBox1.Location = new System.Drawing.Point(0, 60);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(304, 422);
+            this.listBox1.Size = new System.Drawing.Size(304, 388);
             this.listBox1.TabIndex = 25;
             this.listBox1.Tag = "";
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
@@ -182,11 +182,20 @@
             this.txtspecialty.Size = new System.Drawing.Size(131, 22);
             this.txtspecialty.TabIndex = 23;
             // 
+            // label6
+            // 
+            this.label6.Location = new System.Drawing.Point(12, 40);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(182, 17);
+            this.label6.TabIndex = 26;
+            this.label6.Text = "Veterinary List";
+            // 
             // VetListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtspecialty);
             this.Controls.Add(this.maskedTextBox1);
@@ -229,5 +238,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label5;
         internal System.Windows.Forms.TextBox txtspecialty;
+        private System.Windows.Forms.Label label6;
     }
 }
