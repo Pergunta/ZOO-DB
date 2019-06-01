@@ -61,7 +61,7 @@ namespace ZOO_db
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                listBox1.Items.Add(reader.GetString(0) + ":" + reader.GetString(1) + " " + reader.GetString(2));
+                listBox1.Items.Add(reader[0].ToString() + ":" + reader[1].ToString() + " " + reader[2].ToString());
             }
 
             cn.Close();
@@ -93,7 +93,7 @@ namespace ZOO_db
                          MessageBoxButtons.OK);
             if (confirmResult == DialogResult.OK)
             {
-                VeterinarianIUD(txtfname.Text, txtlname.Text, txtlicense.Text, txtspecialty.Text, "Delete");
+                VeterinarianIUD(txtfname.Text, txtlname.Text, txtlicense2.Text, txtspecialty.Text, "Delete");
                 ListBoxLoad();
             }
         }
@@ -107,7 +107,8 @@ namespace ZOO_db
             frm.StartPosition = FormStartPosition.Manual;
             frm.FormClosing += delegate { this.Show(); };
             frm.Show();
-            this.Close();
+            this.Hide();
         }
+
     }
 }

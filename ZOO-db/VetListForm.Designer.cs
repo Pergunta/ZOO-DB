@@ -38,13 +38,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtfname = new System.Windows.Forms.TextBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.txtlicense = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.txtspecialty = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.txtlicense = new System.Windows.Forms.TextBox();
+            this.txtlicense2 = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,7 +65,7 @@
             this.confToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(908, 28);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -133,22 +133,6 @@
             this.listBox1.Tag = "";
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
-            // txtlicense
-            // 
-            this.txtlicense.Location = new System.Drawing.Point(456, 224);
-            this.txtlicense.Mask = "000000000";
-            this.txtlicense.Name = "txtlicense";
-            this.txtlicense.Size = new System.Drawing.Size(70, 22);
-            this.txtlicense.TabIndex = 19;
-            // 
-            // maskedTextBox1
-            // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(456, 394);
-            this.maskedTextBox1.Mask = "000000000";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(70, 22);
-            this.maskedTextBox1.TabIndex = 22;
-            // 
             // label1
             // 
             this.label1.Location = new System.Drawing.Point(453, 362);
@@ -190,18 +174,32 @@
             this.label6.TabIndex = 26;
             this.label6.Text = "Veterinary List";
             // 
+            // txtlicense
+            // 
+            this.txtlicense.Location = new System.Drawing.Point(447, 224);
+            this.txtlicense.Name = "txtlicense";
+            this.txtlicense.Size = new System.Drawing.Size(100, 22);
+            this.txtlicense.TabIndex = 27;
+            // 
+            // txtlicense2
+            // 
+            this.txtlicense2.Location = new System.Drawing.Point(447, 393);
+            this.txtlicense2.Name = "txtlicense2";
+            this.txtlicense2.Size = new System.Drawing.Size(100, 22);
+            this.txtlicense2.TabIndex = 28;
+            // 
             // VetListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(908, 450);
+            this.Controls.Add(this.txtlicense2);
+            this.Controls.Add(this.txtlicense);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtspecialty);
-            this.Controls.Add(this.maskedTextBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.txtlicense);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -232,12 +230,12 @@
         private System.Windows.Forms.Label label2;
         internal System.Windows.Forms.TextBox txtfname;
         private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.MaskedTextBox txtlicense;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label5;
         internal System.Windows.Forms.TextBox txtspecialty;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtlicense;
+        private System.Windows.Forms.TextBox txtlicense2;
     }
 }

@@ -1,3 +1,5 @@
+--VETERINARIAN
+
 create procedure zoodb.InsertDelete_Vet(@fname varchar(15), @lname varchar(15), @license_ID char(9), @specialty varchar(20),@StatementType nvarchar(20) = '')
 as 
 	BEGIN  
@@ -22,9 +24,16 @@ go
 select * from zoodb.getVetList()
 go
 
-create function zoodb.getVet(@license_ID char(9)) returns table
+create function zoodb.getVet(@license_ID int) returns table
 as
 	return(
 	SELECT fname,lname,specialty FROM zoodb.veterinarian WHERE license_ID=@license_ID
+	);
+go
+
+create function zoodb.getVetHC() returns table
+as
+	return(
+	SELECT license_ID,fname,lname FROM zoodb.veterinarian
 	);
 go
