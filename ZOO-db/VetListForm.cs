@@ -57,7 +57,7 @@ namespace ZOO_db
             if (!verifySGBDConnection())
                 return;
 
-            SqlCommand cmd = new SqlCommand("select * from zoodb.getVetList()", cn);
+            SqlCommand cmd = new SqlCommand("zoodb.getVetList", cn);
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
@@ -110,5 +110,9 @@ namespace ZOO_db
             this.Hide();
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

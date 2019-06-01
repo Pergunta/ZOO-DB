@@ -24,7 +24,7 @@ namespace ZOO_db
             InitializeComponent();
             getID(vet_string);
             getData();
-            
+            listBoxLoad();
 
         }
 
@@ -57,6 +57,27 @@ namespace ZOO_db
             this.txtspecialty.Text = reader.GetString(2);
 
             cn.Close();
+        }
+
+        private void listBoxLoad()
+        {
+
+            listView1.Items.Clear();
+            if (!verifySGBDConnection())
+                return;
+
+            SqlCommand cmd = new SqlCommand("select * from zoodb.getVetHC(@license_ID)", cn);
+            cmd.Parameters.AddWithValue("@license_ID", vet_ID);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                listView1.Items.Add(reader[0].ToString());
+                listView1.Items.Add(reader[1].ToString());
+                listView1.Items.Add(reader[2].ToString());
+            }
+
+            cn.Close();
+
         }
 
         private void button1_Click(object sender, EventArgs e)

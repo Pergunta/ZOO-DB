@@ -29,9 +29,6 @@
         private void InitializeComponent()
         {
             this.button1 = new System.Windows.Forms.Button();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.confToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.backToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtlname = new System.Windows.Forms.TextBox();
@@ -45,7 +42,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtlicense = new System.Windows.Forms.TextBox();
             this.txtlicense2 = new System.Windows.Forms.TextBox();
-            this.menuStrip1.SuspendLayout();
+            this.button3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -57,32 +54,6 @@
             this.button1.Text = "ADD VET";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.confToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(908, 28);
-            this.menuStrip1.TabIndex = 2;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // confToolStripMenuItem
-            // 
-            this.confToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.backToolStripMenuItem});
-            this.confToolStripMenuItem.Name = "confToolStripMenuItem";
-            this.confToolStripMenuItem.Size = new System.Drawing.Size(58, 24);
-            this.confToolStripMenuItem.Text = "Menu";
-            // 
-            // backToolStripMenuItem
-            // 
-            this.backToolStripMenuItem.Name = "backToolStripMenuItem";
-            this.backToolStripMenuItem.Size = new System.Drawing.Size(115, 26);
-            this.backToolStripMenuItem.Text = "Back";
-            this.backToolStripMenuItem.Click += new System.EventHandler(this.backToolStripMenuItem_Click);
             // 
             // label4
             // 
@@ -98,7 +69,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(94, 29);
             this.label3.TabIndex = 15;
-            this.label3.Text = "Lname";
+            this.label3.Text = "Last Name";
             // 
             // txtlname
             // 
@@ -109,11 +80,11 @@
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(462, 89);
+            this.label2.Location = new System.Drawing.Point(453, 89);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(94, 29);
             this.label2.TabIndex = 13;
-            this.label2.Text = "Fname";
+            this.label2.Text = "First Name";
             // 
             // txtfname
             // 
@@ -176,7 +147,7 @@
             // 
             // txtlicense
             // 
-            this.txtlicense.Location = new System.Drawing.Point(447, 224);
+            this.txtlicense.Location = new System.Drawing.Point(456, 224);
             this.txtlicense.Name = "txtlicense";
             this.txtlicense.Size = new System.Drawing.Size(100, 22);
             this.txtlicense.TabIndex = 27;
@@ -188,11 +159,22 @@
             this.txtlicense2.Size = new System.Drawing.Size(100, 22);
             this.txtlicense2.TabIndex = 28;
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(12, 12);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 29;
+            this.button3.Text = "button3";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // VetListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(908, 450);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.txtlicense2);
             this.Controls.Add(this.txtlicense);
             this.Controls.Add(this.label6);
@@ -207,12 +189,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtfname);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
             this.Name = "VetListForm";
             this.Text = "VetListForm";
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -221,9 +199,6 @@
         #endregion
 
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem confToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem backToolStripMenuItem;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         internal System.Windows.Forms.TextBox txtlname;
@@ -237,5 +212,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtlicense;
         private System.Windows.Forms.TextBox txtlicense2;
+        private System.Windows.Forms.Button button3;
     }
 }

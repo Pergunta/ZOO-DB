@@ -21,9 +21,6 @@ as
 	);
 go
 
-select * from zoodb.getVetList()
-go
-
 create function zoodb.getVet(@license_ID int) returns table
 as
 	return(
@@ -31,9 +28,13 @@ as
 	);
 go
 
-create function zoodb.getVetHC() returns table
+create function zoodb.getVetHC(@license_ID int) returns table
 as
 	return(
-	SELECT license_ID,fname,lname FROM zoodb.veterinarian
+	SELECT hc.hc_ID,s.name as species_name ,a.name as animal_name FROM zoodb.veterinarian v 
+									join zoodb.health_check hc on v.license_ID = hc.vet_ID 
+									join zoodb.animal a on a.animal_ID = hc.patient_ID
+									join zoodb.species s on a.species = s.species_ID
+									where v.license_ID = @license_ID
 	);
 go
