@@ -30,6 +30,7 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.confToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.veterinarianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadEmployeesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
@@ -50,17 +51,25 @@
             // confToolStripMenuItem
             // 
             this.confToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.veterinarianToolStripMenuItem,
             this.loadEmployeesToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.confToolStripMenuItem.Name = "confToolStripMenuItem";
-            this.confToolStripMenuItem.Size = new System.Drawing.Size(52, 24);
+            this.confToolStripMenuItem.Size = new System.Drawing.Size(63, 24);
             this.confToolStripMenuItem.Text = "MENU";
+            // 
+            // veterinarianToolStripMenuItem
+            // 
+            this.veterinarianToolStripMenuItem.Name = "veterinarianToolStripMenuItem";
+            this.veterinarianToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.veterinarianToolStripMenuItem.Text = "Veterinarian";
+            this.veterinarianToolStripMenuItem.Click += new System.EventHandler(this.veterinarianToolStripMenuItem_Click);
             // 
             // loadEmployeesToolStripMenuItem
             // 
             this.loadEmployeesToolStripMenuItem.Name = "loadEmployeesToolStripMenuItem";
             this.loadEmployeesToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
-            this.loadEmployeesToolStripMenuItem.Text = "Insert Employee";
+            this.loadEmployeesToolStripMenuItem.Text = "Employee";
             this.loadEmployeesToolStripMenuItem.Click += new System.EventHandler(this.loadEmployeesToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
@@ -74,7 +83,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(243, 267);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 17);
+            this.label1.Size = new System.Drawing.Size(85, 17);
             this.label1.TabIndex = 2;
             this.label1.Text = "Toronto in 6";
             // 
@@ -88,7 +97,6 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load_1);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -102,6 +110,7 @@
         private System.Windows.Forms.ToolStripMenuItem loadEmployeesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ToolStripMenuItem veterinarianToolStripMenuItem;
     }
 }
 

@@ -34,3 +34,5 @@ C:\Users\JoãoMonteiro\Desktop\BD\ZOO-DB\ZOO-db\obj\Debug\ZOO-db.csproj.Generate
 C:\Users\JoãoMonteiro\Desktop\BD\ZOO-DB\ZOO-db\obj\Debug\ZOO-db.csproj.CoreCompileInputs.cache
 C:\Users\JoãoMonteiro\Desktop\BD\ZOO-DB\ZOO-db\obj\Debug\ZOO-db.exe
 C:\Users\JoãoMonteiro\Desktop\BD\ZOO-DB\ZOO-db\obj\Debug\ZOO-db.pdb
+D:\BD\ZOO-DB\ZOO-db\obj\Debug\ZOO_db.VetForm.resources
+D:\BD\ZOO-DB\ZOO-db\obj\Debug\ZOO_db.VetListForm.resources

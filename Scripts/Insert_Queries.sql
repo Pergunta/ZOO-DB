@@ -85,7 +85,7 @@ select * from zoodb.purchase;
 
 --ADD VETERINARIAN
 insert into zoodb.veterinarian (fname, lname, license_ID, specialty) VALUES
-('Doctor', 'Medico', 11321 ,'Veterinary Nutrition' );
+('Doctor', 'Medico', 1121 ,'Veterinary Nutrition' );
 select * from zoodb.veterinarian;
 
 --ADD HEALTH CHECK
