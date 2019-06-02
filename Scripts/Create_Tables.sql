@@ -52,7 +52,7 @@ alter table zoodb.cashier
 go
 create table zoodb.enclosure(
 	zone_ID		INT,
-	enc_number	INT IDENTITY(1,1),
+	enc_number	INT not null,
 	size		int,
 	primary key	(zone_ID, enc_number),
 	foreign key (zone_ID) references zoodb.zone(zone_ID));

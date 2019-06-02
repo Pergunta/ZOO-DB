@@ -83,17 +83,17 @@ where shop_ID = 2
 select * from zoodb.merchandise_shop;
 
 --ADD ENCLOSURE
-insert into zoodb.enclosure (zone_ID, size) VALUES
-(1, 10),
-(1, 5),
-(1, 5),
-(2, 10),
-(2, 5),
-(2, 10),
-(3, 10),
-(3, 10),
-(3, 20);
-select * from zoodb.enclosure;
+insert into zoodb.enclosure (zone_ID, enc_number, size) VALUES
+(1,1, 10),
+(1,2, 5),
+(1,3, 5),
+(2,1, 10),
+(2,2, 5),
+(2,3, 10),
+(3,1, 10),
+(3,2, 10),
+(3,3, 20);
+select * from zoodb.enclosure where zoodb.enclosure.zone_ID=3;
 
 --ADD EXHIBIT
 insert into zoodb.exhibit ( name, zone_ID) VALUES
@@ -141,12 +141,12 @@ insert into zoodb.species ( name, scientific_name, conservation_status, zone_ID,
 ( 'King Penguin', 'Aptenodytes Patagonicus', 'LC', 1, 1, 'Subantartic Islands'),
 ( 'Polar Bear', 'Lorem Ipsum', 'CR', 1, 2, 'Artic Circle'),
 ( 'Seal', 'Lorem Ipsum', 'VU', 1, 3, 'Artic Circle'),
-( 'Lion', 'Lorem Ipsum', 'CR', 2, 4, 'Savannah'),
-( 'Rhinoceros', 'Lorem Ipsum', 'EW', 2, 5, 'Savannah'),
-( 'Gazelle', 'Lorem Ipsum', 'NT', 2, 6, 'Savannah'),
-( 'Orangotang', 'Lorem Ipsum', 'VU', 3, 7, 'Rainforest'),
-( 'Baboon', 'Lorem Ipsum', 'LC', 3, 8, 'Rainforest'),
-( 'Tree Frog', 'Lorem Ipsum', 'LC', 3, 9, 'Rainforest');
+( 'Lion', 'Lorem Ipsum', 'CR', 2, 1, 'Savannah'),
+( 'Rhinoceros', 'Lorem Ipsum', 'EW', 2, 2, 'Savannah'),
+( 'Gazelle', 'Lorem Ipsum', 'NT', 2, 3, 'Savannah'),
+( 'Orangotang', 'Lorem Ipsum', 'VU', 3, 1, 'Rainforest'),
+( 'Baboon', 'Lorem Ipsum', 'LC', 3, 2, 'Rainforest'),
+( 'Tree Frog', 'Lorem Ipsum', 'LC', 3, 3, 'Rainforest');
 select * from zoodb.species;
 
 --ADD ANIMAL

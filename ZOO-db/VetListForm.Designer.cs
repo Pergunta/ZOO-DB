@@ -89,7 +89,7 @@
             // 
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 16;
-            this.listBox1.Location = new System.Drawing.Point(0, 92);
+            this.listBox1.Location = new System.Drawing.Point(35, 89);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(140, 356);
             this.listBox1.TabIndex = 25;
@@ -131,7 +131,7 @@
             // 
             // label6
             // 
-            this.label6.Location = new System.Drawing.Point(12, 40);
+            this.label6.Location = new System.Drawing.Point(32, 38);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(182, 17);
             this.label6.TabIndex = 26;
@@ -157,18 +157,18 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 72);
+            this.label4.Location = new System.Drawing.Point(44, 69);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(46, 17);
+            this.label4.Size = new System.Drawing.Size(21, 17);
             this.label4.TabIndex = 30;
             this.label4.Text = "ID";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(61, 72);
+            this.label7.Location = new System.Drawing.Point(96, 69);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(46, 17);
+            this.label7.Size = new System.Drawing.Size(43, 17);
             this.label7.TabIndex = 31;
             this.label7.Text = "name";
             // 

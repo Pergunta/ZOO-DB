@@ -62,11 +62,20 @@ go
 create function zoodb.getZoneEnc(@zone_ID int) returns table
 as
 	return(
-	select enc.enc_number, sp.name, count(a.animal_ID) as animal_count from zoodb.zone zo 
-								join zoodb.enclosure enc on zo.zone_ID = enc.zone_ID
-								join zoodb.species sp on enc.enc_number = sp.enc_number
-								join zoodb.animal a on a.species = sp.species_ID 
-								where zo.zone_ID = 2
-								group by enc.enc_number, sp.name
+	select enc.enc_number, sp.name, count(a.animal_ID) as animal_count from zoodb.enclosure enc 
+								join zoodb.species sp on enc.enc_number = sp.enc_number and enc.zone_ID = sp.zone_ID
+								join zoodb.animal a on a.species = sp.species_ID
+								where enc.zone_ID = @zone_ID
+								group by enc.enc_number, sp.name, enc.zone_ID
 	);
+go
+
+create function zoodb.getEncAnimals(@zone_ID int, @enc_number int) returns table
+as
+	return(
+	select a.animal_ID, a.name from zoodb.enclosure enc 
+								join zoodb.species sp on sp.enc_number = enc.enc_number and enc.zone_ID = sp.zone_ID
+								join zoodb.animal a on sp.species_ID = a.species
+								where enc.enc_number = @enc_number
+								and enc.zone_ID = @zone_ID);
 go

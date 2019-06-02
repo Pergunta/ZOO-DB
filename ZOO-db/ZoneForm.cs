@@ -13,7 +13,8 @@ namespace ZOO_db
 {
     public partial class ZoneForm : Form
     {
-
+        private string zone_ID;
+        private string enc_number;
         private SqlConnection cn = new SqlConnection("Data Source = tcp:mednat.ieeta.pt\\SQLSERVER,8101 ;" +
                         "Initial Catalog = p8g8 ;" +
                         "uid = p8g8 ;" +
@@ -66,12 +67,9 @@ namespace ZOO_db
             cn.Close();
         }
 
-        private void listViewLoad(String zone_ID)
+        private void EncListLoad(String zone_ID)
         {
-
-            listView1.Items.Clear();
-            listView2.Items.Clear();
-            listView3.Items.Clear();
+            listBox1.Items.Clear();
             if (!verifySGBDConnection())
                 return;
 
@@ -80,9 +78,26 @@ namespace ZOO_db
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                listView1.Items.Add(reader[0].ToString());
-                listView2.Items.Add(reader[1].ToString());
-                listView3.Items.Add(reader[2].ToString());
+                listBox1.Items.Add(reader[0].ToString() + ";    " + reader[1].ToString() + ";   " + reader[2].ToString());
+            }
+
+            cn.Close();
+
+        }
+
+        private void AnimalListLoad(String zone_ID, String enc_number)
+        {
+            listBox2.Items.Clear();
+            if (!verifySGBDConnection())
+                return;
+
+            SqlCommand cmd = new SqlCommand("select * from zoodb.getEncAnimals(@zone_ID, @enc_number)", cn);
+            cmd.Parameters.AddWithValue("@zone_ID", zone_ID);
+            cmd.Parameters.AddWithValue("@enc_number", enc_number);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                listBox2.Items.Add(reader[0].ToString() + ";    " + reader[1].ToString());
             }
 
             cn.Close();
@@ -93,9 +108,18 @@ namespace ZOO_db
         {
             string item = comboBox1.GetItemText(comboBox1.SelectedItem);
             string[] split = item.Split(':');
-            ManagerLoad(split[0]);
-            listViewLoad(split[0]);
+            zone_ID = split[0];
+            ManagerLoad(zone_ID);
+            EncListLoad(zone_ID);
 
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string item = listBox1.GetItemText(listBox1.SelectedItem);
+            string[] split = item.Split(';');
+            enc_number = split[0];
+            AnimalListLoad(zone_ID, enc_number);
         }
     }
 }
