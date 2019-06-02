@@ -43,6 +43,7 @@
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -149,7 +150,7 @@
             this.listBox1.ItemHeight = 16;
             this.listBox1.Location = new System.Drawing.Point(256, 143);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(255, 292);
+            this.listBox1.Size = new System.Drawing.Size(255, 260);
             this.listBox1.TabIndex = 16;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
@@ -180,11 +181,22 @@
             this.label9.TabIndex = 19;
             this.label9.Text = "Animal Name";
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(256, 412);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(140, 23);
+            this.button2.TabIndex = 20;
+            this.button2.Text = "Move Species";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // ZoneForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.listBox2);
@@ -223,5 +235,6 @@
         private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button button2;
     }
 }

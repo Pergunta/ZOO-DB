@@ -87,13 +87,15 @@ insert into zoodb.enclosure (zone_ID, enc_number, size) VALUES
 (1,1, 10),
 (1,2, 5),
 (1,3, 5),
+(1,4, 7),
 (2,1, 10),
 (2,2, 5),
 (2,3, 10),
 (3,1, 10),
 (3,2, 10),
 (3,3, 20);
-select * from zoodb.enclosure where zoodb.enclosure.zone_ID=3;
+select * from zoodb.enclosure;
+
 
 --ADD EXHIBIT
 insert into zoodb.exhibit ( name, zone_ID) VALUES

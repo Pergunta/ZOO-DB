@@ -13,8 +13,8 @@ namespace ZOO_db
 {
     public partial class ZoneForm : Form
     {
-        private string zone_ID;
-        private string enc_number;
+        private string zone_ID ="0";
+        private string enc_number="0";
         private SqlConnection cn = new SqlConnection("Data Source = tcp:mednat.ieeta.pt\\SQLSERVER,8101 ;" +
                         "Initial Catalog = p8g8 ;" +
                         "uid = p8g8 ;" +
@@ -78,7 +78,14 @@ namespace ZOO_db
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                listBox1.Items.Add(reader[0].ToString() + ";    " + reader[1].ToString() + ";   " + reader[2].ToString());
+                if (reader[1].ToString() == "")
+                {
+                    listBox1.Items.Add(reader[0].ToString() + ";    Empty;   " + reader[2].ToString()); 
+                }
+                else
+                {
+                    listBox1.Items.Add(reader[0].ToString() + ";    " + reader[1].ToString() + ";   " + reader[2].ToString());
+                }
             }
 
             cn.Close();
@@ -120,6 +127,17 @@ namespace ZOO_db
             string[] split = item.Split(';');
             enc_number = split[0];
             AnimalListLoad(zone_ID, enc_number);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var frm = new MoveSpecies(zone_ID);
+            frm.Location = this.Location;
+            frm.StartPosition = FormStartPosition.Manual;
+            frm.FormClosing += delegate { EncListLoad(zone_ID); };
+
+
+            frm.Show();
         }
     }
 }

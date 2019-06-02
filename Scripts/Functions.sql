@@ -59,23 +59,66 @@ as
 	);
 go
 
+--ENCLOSURES
+
+create procedure zoodb.moveSpecies(@zone_ID int , @enc1 int, @enc2 int)
+as
+begin
+	update zoodb.species
+	set enc_number = @enc2
+	where zone_ID = @zone_ID and enc_number = @enc1
+end
+go
+
 create function zoodb.getZoneEnc(@zone_ID int) returns table
 as
 	return(
 	select enc.enc_number, sp.name, count(a.animal_ID) as animal_count from zoodb.enclosure enc 
-								join zoodb.species sp on enc.enc_number = sp.enc_number and enc.zone_ID = sp.zone_ID
-								join zoodb.animal a on a.species = sp.species_ID
+								left join zoodb.species sp on enc.enc_number = sp.enc_number and enc.zone_ID = sp.zone_ID
+								left join zoodb.animal a on a.species = sp.species_ID
 								where enc.zone_ID = @zone_ID
-								group by enc.enc_number, sp.name, enc.zone_ID
+								group by sp.name, enc.zone_ID, enc.enc_number 
+	);
+go
+
+create function zoodb.getZoneEncInhabited(@zone_ID int) returns table
+as
+	return(
+	select enc_number, name from zoodb.getZoneEnc(@zone_ID) func
+				where func.name is not null
+			 
+	);
+go
+
+create function zoodb.getZoneEncEmpty(@zone_ID int) returns table
+as
+	return(
+	select enc_number from zoodb.getZoneEnc(@zone_ID) func
+				where func.name is null
+			 
 	);
 go
 
 create function zoodb.getEncAnimals(@zone_ID int, @enc_number int) returns table
 as
 	return(
-	select a.animal_ID, a.name from zoodb.enclosure enc 
+	select a.animal_ID, a.name, sp.name as sp_name from zoodb.enclosure enc 
 								join zoodb.species sp on sp.enc_number = enc.enc_number and enc.zone_ID = sp.zone_ID
 								join zoodb.animal a on sp.species_ID = a.species
 								where enc.enc_number = @enc_number
 								and enc.zone_ID = @zone_ID);
+go
+
+
+--USAR PARA FAZER ADD ZOOKEEPER/CASHIER E EMPLOYEE AO MESMO TEMPO
+--CODIGO DO BRUNO PROBABLY SHIT
+go
+create procedure Vinhos.test(@VinhoID int,@Aroma varchar(60), @Descricao varchar(800), @Nome varchar(60))
+as 
+	declare @CastaID int;
+	BEGIN  
+	insert into Vinhos.Castas(Aroma, Descricao, Nome) values(@Aroma , @Descricao, @Nome) 
+	Set @CastaID=( SELECT max(Vinhos.Castas.ID) FROM Vinhos.Castas);
+	insert into Vinhos.Tem(VinhoId, CastasID) values(@VinhoID , @CastaID) 
+	END                   
 go
