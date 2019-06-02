@@ -32,6 +32,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.confToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.backToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtlname = new System.Windows.Forms.TextBox();
@@ -44,15 +45,14 @@
             this.button2 = new System.Windows.Forms.Button();
             this.txtZone = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(592, 137);
+            this.button1.Location = new System.Drawing.Point(583, 137);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(127, 23);
+            this.button1.Size = new System.Drawing.Size(140, 23);
             this.button1.TabIndex = 0;
             this.button1.Text = "ADD EMPLOYEE";
             this.button1.UseVisualStyleBackColor = true;
@@ -81,9 +81,16 @@
             // backToolStripMenuItem
             // 
             this.backToolStripMenuItem.Name = "backToolStripMenuItem";
-            this.backToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.backToolStripMenuItem.Size = new System.Drawing.Size(117, 26);
             this.backToolStripMenuItem.Text = "Back";
             this.backToolStripMenuItem.Click += new System.EventHandler(this.backToolStripMenuItem_Click);
+            // 
+            // loadToolStripMenuItem
+            // 
+            this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(117, 26);
+            this.loadToolStripMenuItem.Text = "Load";
+            this.loadToolStripMenuItem.Click += new System.EventHandler(this.LoadToolStripMenuItem_Click);
             // 
             // label4
             // 
@@ -158,9 +165,9 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(452, 258);
+            this.button2.Location = new System.Drawing.Point(583, 255);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(159, 23);
+            this.button2.Size = new System.Drawing.Size(140, 23);
             this.button2.TabIndex = 22;
             this.button2.Text = "ADD ZOOKEEPER";
             this.button2.UseVisualStyleBackColor = true;
@@ -181,13 +188,6 @@
             this.label5.Size = new System.Drawing.Size(41, 17);
             this.label5.TabIndex = 24;
             this.label5.Text = "Zone";
-            // 
-            // loadToolStripMenuItem
-            // 
-            this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
-            this.loadToolStripMenuItem.Text = "Load";
-            this.loadToolStripMenuItem.Click += new System.EventHandler(this.LoadToolStripMenuItem_Click);
             // 
             // InsertEmployee
             // 

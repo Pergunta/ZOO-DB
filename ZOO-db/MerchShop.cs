@@ -32,21 +32,30 @@ namespace ZOO_db
 
             return cn.State == ConnectionState.Open;
         }
-        private void ListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (MerchShops.SelectedIndex > 0)
+            if (listBox1.SelectedIndex >= 0)
             {
-                currentShop= MerchShops.SelectedIndex;
+                currentShop= listBox1.SelectedIndex;
                 ShowMerchShop();
+            }
+        }
+
+        private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBox2.SelectedIndex >= 0)
+            {
+                currentProduct = listBox2.SelectedIndex;
+                ShowProduct();
             }
         }
 
         public void ShowMerchShop()
         {
-            if (MerchShops.Items.Count == 0 | currentShop < 0)
+            if (listBox1.Items.Count == 0 | currentShop < 0)
                 return;
             Shop shop1 = new Shop();
-            shop1 = (Shop)MerchShops.Items[currentShop];
+            shop1 = (Shop)listBox1.Items[currentShop];
             txtShopID.Text = shop1.ShopID.ToString();
             txtZone.Text = shop1.ZoneID.ToString();
             txtManager.Text = shop1.ManagerID.ToString();
@@ -56,10 +65,11 @@ namespace ZOO_db
 
         public void ShowProduct()
         {
-            if (ProductsList.Items.Count == 0 | currentProduct < 0 )
+            if (listBox2.Items.Count == 0 | currentProduct < 0 )
                 return;
             Products product1 = new Products();
-            product1 = (Products)ProductsList.Items[currentProduct];
+            product1 = (Products)listBox2.Items[currentProduct];
+            txtPshopID.Text = product1.ShopID.ToString();
             txtPName.Text = product1.Name;
             txtPrice.Text = product1.Price.ToString();
             txtPID.Text = product1.ProductID.ToString();
@@ -74,20 +84,23 @@ namespace ZOO_db
 
             SqlCommand cmd = new SqlCommand("SELECT * FROM zoodb.merchandise_shop", cn);
             SqlDataReader reader = cmd.ExecuteReader();
-            MerchShops.Items.Clear();
+            listBox1.Items.Clear();
 
             while (reader.Read())
             {
               
                 Shop S = new Shop();
+                
                 S.ShopID = Int32.Parse(reader["shop_ID"].ToString());
                 S.ZoneID = Int32.Parse(reader["zone_ID"].ToString());
                 S.ManagerID = Int32.Parse(reader["manager_ID"].ToString());
-                MerchShops.Items.Add(S);
+                listBox1.Items.Add(S);
             }
+            cn.Close();
+
             currentShop = 0;
             ShowMerchShop();
-            cn.Close();
+            
 
 
             if (!verifySGBDConnection())
@@ -95,23 +108,30 @@ namespace ZOO_db
 
             SqlCommand cmd1 = new SqlCommand("SELECT * FROM zoodb.product", cn);
             SqlDataReader reader1 = cmd1.ExecuteReader();
-            ProductsList.Items.Clear();
+            listBox2.Items.Clear();
             while (reader1.Read())
             {
                 Shop shop1= new Shop();
-                shop1 = (Shop)MerchShops.Items[currentShop];
+                shop1 = (Shop)listBox1.Items[currentShop];
                 Products P = new Products();
                 P.ShopID = Int32.Parse(reader1["shop_ID"].ToString());
                 P.ProductID = Int32.Parse(reader1["product_ID"].ToString());
                 P.Price = Int32.Parse(reader1["price"].ToString());
                 P.Name = reader1["name"].ToString();
-                if(P.ShopID == shop1.ShopID)
-                    ProductsList.Items.Add(P);
+               
+                listBox2.Items.Add(P);
             }
-
+            cn.Close();
             currentProduct = 0;
             ShowProduct();
-            cn.Close();
+          
         }
+
+        private void BackToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+       
     }
 }
