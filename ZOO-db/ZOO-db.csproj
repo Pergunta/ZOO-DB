@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChangeManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangeManager.Designer.cs">
+      <DependentUpon>ChangeManager.cs</DependentUpon>
+    </Compile>
     <Compile Include="MoveSpecies.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +105,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MerchShop.resx">
       <DependentUpon>MerchShop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangeManager.resx">
+      <DependentUpon>ChangeManager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MoveSpecies.resx">
       <DependentUpon>MoveSpecies.cs</DependentUpon>

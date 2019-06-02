@@ -42,3 +42,4 @@ C:\Users\JoãoMonteiro\Desktop\BD\ZOO-DB\ZOO-db\obj\Debug\ZOO_db.MerchShop.resou
 D:\BD\ZOO-DB\ZOO-db\obj\Debug\ZOO_db.ZoneForm.resources
 D:\BD\ZOO-DB\ZOO-db\obj\Debug\ZOO_db.MerchShop.resources
 D:\BD\ZOO-DB\ZOO-db\obj\Debug\ZOO_db.MoveSpecies.resources
+D:\BD\ZOO-DB\ZOO-db\obj\Debug\ZOO_db.ChangeManager.resources

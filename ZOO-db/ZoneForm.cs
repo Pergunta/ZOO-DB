@@ -135,8 +135,15 @@ namespace ZOO_db
             frm.Location = this.Location;
             frm.StartPosition = FormStartPosition.Manual;
             frm.FormClosing += delegate { EncListLoad(zone_ID); };
+            frm.Show();
+        }
 
-
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var frm = new ChangeManager(zone_ID);
+            frm.Location = this.Location;
+            frm.StartPosition = FormStartPosition.Manual;
+            frm.FormClosing += delegate { EncListLoad(zone_ID); };
             frm.Show();
         }
     }
