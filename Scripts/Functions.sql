@@ -43,12 +43,29 @@ go
 
 --ZONE
 
+create procedure zoodb.changeZoneManager(@zone_ID int, @emp_ID int)
+as
+	update zoodb.zone
+	set manager_ID = @emp_ID
+	where zone_ID = @zone_ID
+go
+
 create function zoodb.getZoneList() returns table
 as
 	return(
 	select * from zoodb.zone
 	);
 go
+
+create function zoodb.getZoneZK(@zone_ID int) returns table
+as
+	return(
+	select emp.fname, emp.lname, emp.ID from zoodb.zookeeper zk
+				join zoodb.zone z on z.zone_ID = zk.zone
+				join zoodb.employee emp on emp.ID = zk.emp_ID 
+				where z.zone_ID = @zone_ID
+	);
+go 
 
 create function zoodb.getZoneManager(@zone_ID int) returns table
 as
