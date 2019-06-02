@@ -11,18 +11,18 @@ using System.Data.SqlClient;
 
 namespace ZOO_db
 {
-    public partial class VetForm : Form
+    public partial class AnimalForm : Form
     {
         private SqlConnection cn = new SqlConnection("Data Source = tcp:mednat.ieeta.pt\\SQLSERVER,8101 ;" +
                                 "Initial Catalog = p8g8 ;" +
                                 "uid = p8g8 ;" +
                                 "Password = Tudomerda69. ;");
-        private String vet_ID = "";
+        private String animal_ID = "";
 
-        public VetForm(String vet_string)
+        public AnimalForm(String _animal_ID)
         {
+            animal_ID = _animal_ID;
             InitializeComponent();
-            getID(vet_string);
             getData();
             listViewLoad();
 
@@ -37,24 +37,18 @@ namespace ZOO_db
             return cn.State == ConnectionState.Open;
         }
 
-        private void getID(String line)
-        {
-            string[] split = line.Split(':');
-            vet_ID = split[0];
-            this.txtlicense.Text = vet_ID;
-        }
-
         private void getData()
         {
             if (!verifySGBDConnection())
                 return;
 
-            SqlCommand cmd = new SqlCommand("select * from zoodb.getVet(@license_ID)", cn);
-            cmd.Parameters.AddWithValue("@license_ID", vet_ID);
+            SqlCommand cmd = new SqlCommand("select * from zoodb.getAnimal(@animal_ID)", cn);
+            cmd.Parameters.AddWithValue("@animal_ID", animal_ID);
             SqlDataReader reader = cmd.ExecuteReader();
             reader.Read();
-            this.txtname.Text = reader.GetString(0) + " " + reader.GetString(1);
-            this.txtspecialty.Text = reader.GetString(2);
+            this.txtname.Text = reader.GetString(0);
+            this.txtid.Text = reader[1].ToString();
+            this.txtspecies.Text = reader.GetString(2);
 
             cn.Close();
         }
@@ -62,19 +56,16 @@ namespace ZOO_db
         private void listViewLoad()
         {
 
-            listView1.Items.Clear();
+            listBox1.Items.Clear();
             if (!verifySGBDConnection())
                 return;
 
-            SqlCommand cmd = new SqlCommand("select * from zoodb.getVetHC(@license_ID)", cn);
-            cmd.Parameters.AddWithValue("@license_ID", vet_ID);
+            SqlCommand cmd = new SqlCommand("select * from zoodb.getAnimalHC(@animal_ID)", cn);
+            cmd.Parameters.AddWithValue("@animal_ID", animal_ID);
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                listView1.Items.Add(reader[0].ToString());
-                listView1.Items.Add(reader[1].ToString());
-                listView1.Items.Add(reader[2].ToString());
-                listView1.Items.Add(reader[3].ToString());
+                listBox1.Items.Add(reader[0].ToString() + ";    " + reader[1].ToString() + ";   " + reader[2].ToString() + " " + reader[3].ToString() + ";   (" + reader[4].ToString()+")");
             }
 
             cn.Close();

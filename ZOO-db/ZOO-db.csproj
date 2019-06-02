@@ -66,11 +66,23 @@
     <Compile Include="MerchShop.Designer.cs">
       <DependentUpon>MerchShop.cs</DependentUpon>
     </Compile>
+    <Compile Include="AnimalForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AnimalForm.Designer.cs">
+      <DependentUpon>AnimalForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="VetForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="VetForm.Designer.cs">
       <DependentUpon>VetForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SponsorshipForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SponsorshipForm.Designer.cs">
+      <DependentUpon>SponsorshipForm.cs</DependentUpon>
     </Compile>
     <Compile Include="VetListForm.cs">
       <SubType>Form</SubType>
@@ -112,8 +124,14 @@
     <EmbeddedResource Include="MoveSpecies.resx">
       <DependentUpon>MoveSpecies.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AnimalForm.resx">
+      <DependentUpon>AnimalForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="VetForm.resx">
       <DependentUpon>VetForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SponsorshipForm.resx">
+      <DependentUpon>SponsorshipForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VetListForm.resx">
       <DependentUpon>VetListForm.cs</DependentUpon>

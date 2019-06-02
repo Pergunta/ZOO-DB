@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 namespace ZOO_db
 {
-    partial class VetForm
+    partial class AnimalForm
     {
         /// <summary>
         /// Required designer variable.
@@ -33,15 +33,15 @@ namespace ZOO_db
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtname = new System.Windows.Forms.Label();
-            this.txtlicense = new System.Windows.Forms.Label();
-            this.txtspecialty = new System.Windows.Forms.Label();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.txtid = new System.Windows.Forms.Label();
+            this.txtspecies = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // label1
@@ -49,9 +49,9 @@ namespace ZOO_db
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(62, 191);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(78, 17);
+            this.label1.Size = new System.Drawing.Size(71, 17);
             this.label1.TabIndex = 0;
-            this.label1.Text = "License ID:";
+            this.label1.Text = "Animal ID:";
             // 
             // label2
             // 
@@ -67,9 +67,9 @@ namespace ZOO_db
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(61, 259);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(69, 17);
+            this.label3.Size = new System.Drawing.Size(62, 17);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Specialty:";
+            this.label3.Text = "Species:";
             // 
             // txtname
             // 
@@ -78,31 +78,20 @@ namespace ZOO_db
             this.txtname.Name = "txtname";
             this.txtname.Size = new System.Drawing.Size(156, 36);
             this.txtname.TabIndex = 4;
-            this.txtname.Text = "txtname";
             // 
-            // txtlicense
+            // txtid
             // 
-            this.txtlicense.Location = new System.Drawing.Point(62, 208);
-            this.txtlicense.Name = "txtlicense";
-            this.txtlicense.Size = new System.Drawing.Size(68, 27);
-            this.txtlicense.TabIndex = 5;
-            this.txtlicense.Text = "txtlicense";
+            this.txtid.Location = new System.Drawing.Point(62, 208);
+            this.txtid.Name = "txtid";
+            this.txtid.Size = new System.Drawing.Size(68, 27);
+            this.txtid.TabIndex = 5;
             // 
-            // txtspecialty
+            // txtspecies
             // 
-            this.txtspecialty.Location = new System.Drawing.Point(61, 276);
-            this.txtspecialty.Name = "txtspecialty";
-            this.txtspecialty.Size = new System.Drawing.Size(156, 27);
-            this.txtspecialty.TabIndex = 6;
-            this.txtspecialty.Text = "txtspecialty";
-            // 
-            // listView1
-            // 
-            this.listView1.Location = new System.Drawing.Point(540, 78);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(190, 231);
-            this.listView1.TabIndex = 8;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.txtspecies.Location = new System.Drawing.Point(61, 276);
+            this.txtspecies.Name = "txtspecies";
+            this.txtspecies.Size = new System.Drawing.Size(156, 27);
+            this.txtspecies.TabIndex = 6;
             // 
             // button1
             // 
@@ -117,7 +106,7 @@ namespace ZOO_db
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(364, 78);
+            this.label4.Location = new System.Drawing.Point(217, 65);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(142, 17);
             this.label4.TabIndex = 10;
@@ -126,56 +115,66 @@ namespace ZOO_db
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(537, 58);
+            this.label5.Location = new System.Drawing.Point(390, 45);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(48, 17);
+            this.label5.Size = new System.Drawing.Size(44, 17);
             this.label5.TabIndex = 11;
-            this.label5.Text = "HC_ID";
+            this.label5.Text = "HC ID";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(649, 58);
+            this.label6.Location = new System.Drawing.Point(435, 45);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(58, 17);
+            this.label6.Size = new System.Drawing.Size(50, 17);
             this.label6.TabIndex = 12;
-            this.label6.Text = "Species";
+            this.label6.Text = "Vet_ID";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(704, 58);
+            this.label7.Location = new System.Drawing.Point(486, 45);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(45, 17);
+            this.label7.Size = new System.Drawing.Size(74, 17);
             this.label7.TabIndex = 13;
-            this.label7.Text = "Name";
+            this.label7.Text = "Vet_Name";
             // 
             // label8
             // 
-            this.label8.Location = new System.Drawing.Point(580, 58);
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(560, 45);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(73, 17);
+            this.label8.Size = new System.Drawing.Size(98, 17);
             this.label8.TabIndex = 14;
-            this.label8.Text = "Patient_ID";
+            this.label8.Text = "Support Team";
             // 
-            // VetForm
+            // listBox1
             // 
-            this.ClientSize = new System.Drawing.Size(908, 450);
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 16;
+            this.listBox1.Location = new System.Drawing.Point(393, 65);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(250, 228);
+            this.listBox1.TabIndex = 15;
+            // 
+            // AnimalForm
+            // 
+            this.ClientSize = new System.Drawing.Size(694, 371);
+            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.listView1);
-            this.Controls.Add(this.txtspecialty);
-            this.Controls.Add(this.txtlicense);
+            this.Controls.Add(this.txtspecies);
+            this.Controls.Add(this.txtid);
             this.Controls.Add(this.txtname);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "VetForm";
-            this.Text = "VetForm";
+            this.Name = "AnimalForm";
+            this.Text = "AnimalForm";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -187,14 +186,14 @@ namespace ZOO_db
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label txtname;
-        private System.Windows.Forms.Label txtlicense;
-        private System.Windows.Forms.Label txtspecialty;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.Label txtid;
+        private System.Windows.Forms.Label txtspecies;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }
