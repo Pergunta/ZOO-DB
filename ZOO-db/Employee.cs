@@ -14,7 +14,7 @@ namespace ZOO_db
         private Int32 _ID;
         private String _fname;
         private String _lname;
-        private DateTime _birthdate;
+        private String _birthdate;
 
 
         public Int32 ID
@@ -52,7 +52,7 @@ namespace ZOO_db
             }
         }
 
-        public DateTime Birthdate
+        public String Birthdate
         {
 
             get { return _birthdate; }
@@ -77,7 +77,7 @@ namespace ZOO_db
         {
         }
 
-        public Employee(String Fname, String Lname, DateTime birthdate) : base()
+        public Employee(String Fname, String Lname, String birthdate) : base()
         {
             this.Fname = Fname;
             this.Lname = Lname;

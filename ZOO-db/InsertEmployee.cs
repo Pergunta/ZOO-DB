@@ -22,11 +22,13 @@ namespace ZOO_db
         public InsertEmployee()
         {
             InitializeComponent();
+            LoadToolStripMenuItem_Click(null, null);
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             cn.Open();
+            
 
         }
 
@@ -49,7 +51,7 @@ namespace ZOO_db
              cmd.Parameters.AddWithValue("@fname", E.Fname);
              cmd.Parameters.AddWithValue("@lname", E.Lname);
              cmd.Parameters.AddWithValue("@birthdate", E.Birthdate);
-          
+             
           
         
             cmd.ExecuteNonQuery();
@@ -90,8 +92,7 @@ namespace ZOO_db
             {
                 employee1.Fname = txtfname.Text;
                 employee1.Lname = txtlname.Text;
-                String[] date = txtbirthdate.Text.Split('-');
-                employee1.Birthdate = new DateTime(Int32.Parse(date[0]), int.Parse(date[1]), int.Parse(date[2]));
+                employee1.Birthdate = txtbirthdate.Text;
             }
             catch (Exception ex)
             {
@@ -106,9 +107,8 @@ namespace ZOO_db
             Employee employee1 = new Employee();
             try
             {
-                string[] date = txtbirthdate.Text.Split('-');
-                DateTime tt = new DateTime(Int32.Parse(date[0]), int.Parse(date[1]), int.Parse(date[2]));
-                employee1 = new Employee(txtfname.Text, txtlname.Text,tt );
+             
+                employee1 = new Employee(txtfname.Text, txtlname.Text,txtbirthdate.Text );
 
             } catch (Exception ex)
             {
@@ -130,7 +130,7 @@ namespace ZOO_db
 
         private void ListBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listBox1.SelectedIndex > 0)
+            if (listBox1.SelectedIndex >= 0)
             {
                 currentEmployee = listBox1.SelectedIndex;
                 ShowEmployee();
@@ -147,7 +147,7 @@ namespace ZOO_db
             employee1 = (Employee)listBox1.Items[currentEmployee];
             txtfname.Text = employee1.Fname;
             txtlname.Text = employee1.Lname;
-            txtbirthdate.Text = employee1.Birthdate.ToString("yyyy-mm-ddd");
+            txtbirthdate.Text = employee1.Birthdate;
 
 
         }
@@ -167,13 +167,15 @@ namespace ZOO_db
                 Employee E = new Employee();
                 E.Fname = reader["Fname"].ToString();
                 E.Lname = reader["Lname"].ToString();
-                string[] date = reader["Birthdate"].ToString().Split('-');
-                DateTime tt = new DateTime(Int32.Parse(date[0]), int.Parse(date[1]), int.Parse(date[2]));
-                E.Birthdate = tt;
+                E.Birthdate = reader["Birthdate"].ToString();
+               
                 listBox1.Items.Add(E);
             }
 
+
+
             cn.Close();
+
 
 
             currentEmployee = 0;

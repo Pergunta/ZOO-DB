@@ -49,8 +49,8 @@
             this.backToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.txtquantity = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtPshopID = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -103,6 +103,7 @@
             // 
             // txtShopID
             // 
+            this.txtShopID.Enabled = false;
             this.txtShopID.Location = new System.Drawing.Point(403, 80);
             this.txtShopID.Name = "txtShopID";
             this.txtShopID.Size = new System.Drawing.Size(47, 22);
@@ -178,6 +179,7 @@
             this.button1.TabIndex = 14;
             this.button1.Text = "ADD Item";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // menuStrip1
             // 
@@ -221,6 +223,7 @@
             this.button2.TabIndex = 16;
             this.button2.Text = "Delete Item";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
             // button3
             // 
@@ -230,30 +233,31 @@
             this.button3.TabIndex = 17;
             this.button3.Text = "Update Item";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.Button3_Click);
+            // 
+            // txtquantity
+            // 
+            this.txtquantity.Location = new System.Drawing.Point(543, 284);
+            this.txtquantity.Name = "txtquantity";
+            this.txtquantity.Size = new System.Drawing.Size(37, 22);
+            this.txtquantity.TabIndex = 18;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(473, 274);
+            this.label7.Location = new System.Drawing.Point(476, 284);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(54, 17);
-            this.label7.TabIndex = 18;
-            this.label7.Text = "ShopID";
-            // 
-            // txtPshopID
-            // 
-            this.txtPshopID.Location = new System.Drawing.Point(542, 273);
-            this.txtPshopID.Name = "txtPshopID";
-            this.txtPshopID.Size = new System.Drawing.Size(100, 22);
-            this.txtPshopID.TabIndex = 19;
+            this.label7.Size = new System.Drawing.Size(61, 17);
+            this.label7.TabIndex = 19;
+            this.label7.Text = "Quantity";
             // 
             // MerchShop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.txtPshopID);
             this.Controls.Add(this.label7);
+            this.Controls.Add(this.txtquantity);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -305,7 +309,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ToolStripMenuItem backToolStripMenuItem;
+        private System.Windows.Forms.TextBox txtquantity;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtPshopID;
     }
 }

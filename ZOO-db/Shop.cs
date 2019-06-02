@@ -68,7 +68,7 @@ namespace ZOO_db
 
         public override String ToString()
         {
-            return "shop:"+_shopID + "   " + _managerID;
+            return "Shop: "+_shopID + "ManagerID: " + _managerID;
         }
 
         public Shop() : base()

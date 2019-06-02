@@ -8,13 +8,27 @@ namespace ZOO_db
 {
     class Products
     {
-
+        private Int32 _quantity;
         private Int32 _product_ID;
         private String _name;
         private Int32 _price;
         private Int32 _shopID;
 
+        public Int32 Quantity
+        {
+            get { return _quantity; }
+            set {
 
+                if (value == null)
+                {
+                    _quantity = 0;
+                }
+                else
+                {
+                    _quantity = value;
+                }
+                 }
+        }
         public Int32 ProductID
         {
             get { return _product_ID; }
@@ -68,15 +82,16 @@ namespace ZOO_db
 
         public override String ToString()
         {
-            return _name + "   " + _price;
+            return _name + "      " + _price+"$";
         }
 
         public Products() : base()
         {
         }
 
-        public Products(String name ,Int32 price,Int32 shopID) : base()
+        public Products(String name ,Int32 price,Int32 shopID , Int32 quantity) : base()
         {
+            this.Quantity = quantity;
             this.Name = name;
             this.Price = price;
             this.ShopID = shopID;
