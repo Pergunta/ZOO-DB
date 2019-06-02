@@ -14,7 +14,6 @@ namespace ZOO_db
     public partial class ChangeManager : Form
     {
         private string zone_ID = "0";
-        private string species_name = "";
         private SqlConnection cn = new SqlConnection("Data Source = tcp:mednat.ieeta.pt\\SQLSERVER,8101 ;" +
                 "Initial Catalog = p8g8 ;" +
                 "uid = p8g8 ;" +
@@ -24,8 +23,8 @@ namespace ZOO_db
         {
             zone_ID = ID;
             InitializeComponent();
-            LoadComboBox1();
-            LoadComboBox2();
+            LoadManager();
+            LoadZooKeepers();
         }
 
         private bool verifySGBDConnection()
@@ -37,71 +36,59 @@ namespace ZOO_db
             return cn.State == ConnectionState.Open;
         }
 
-        public void LoadComboBox1() {
-            comboBox1.Items.Clear();
+        private void LoadManager() {
             if (!verifySGBDConnection())
                 return;
 
-            SqlCommand cmd = new SqlCommand("select * from zoodb.getZoneEncInhabited(@zone_ID)", cn);
+            SqlCommand cmd = new SqlCommand("select * from zoodb.getZoneManager(@zone_ID)", cn);
             cmd.Parameters.AddWithValue("@zone_ID", zone_ID);
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                comboBox1.Items.Add(reader[0].ToString());
-                species_name = reader.GetString(1);
+                txtname.Text = reader.GetString(0) + " " + reader.GetString(1);
+                txtid.Text = reader[2].ToString();
             }
 
             cn.Close();
         }
 
-        public void LoadComboBox2()
-        {
-            comboBox2.Items.Clear();
+        private void LoadZooKeepers() {
+
+            listBox1.Items.Clear();
             if (!verifySGBDConnection())
                 return;
 
-            SqlCommand cmd = new SqlCommand("select * from zoodb.getZoneEncEmpty(@zone_ID)", cn);
+            SqlCommand cmd = new SqlCommand("select * from zoodb.getZoneZK(@zone_ID)", cn);
             cmd.Parameters.AddWithValue("@zone_ID", zone_ID);
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                comboBox2.Items.Add(reader[0].ToString());
+                listBox1.Items.Add(reader[2].ToString() + ":" + reader[0].ToString() + " " + reader[1].ToString());
             }
 
             cn.Close();
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
-            if (!verifySGBDConnection())
-                return;
-
-            SqlCommand cmd = new SqlCommand("select * from zoodb.getEncAnimals(@zone_ID, @enc_number)", cn);
-            cmd.Parameters.AddWithValue("@zone_ID", zone_ID);
-            cmd.Parameters.AddWithValue("@enc_number", comboBox1.GetItemText(comboBox1.SelectedItem));
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                txtspecies.Text = reader.GetString(2);
-            }
-
-            cn.Close();
+            this.Close();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            string selected = listBox1.GetItemText(listBox1.SelectedItem);
+            string[] emp = selected.Split(':');
 
             if (!verifySGBDConnection())
                 return;
 
-            SqlCommand cmd = new SqlCommand("zoodb.moveSpecies", cn) { CommandType = CommandType.StoredProcedure };
+            SqlCommand cmd = new SqlCommand("zoodb.changeZoneManager", cn) { CommandType = CommandType.StoredProcedure };
             cmd.Parameters.AddWithValue("@zone_ID", zone_ID);
-            cmd.Parameters.AddWithValue("@enc1", comboBox1.GetItemText(comboBox1.SelectedItem));
-            cmd.Parameters.AddWithValue("@enc2", comboBox2.GetItemText(comboBox2.SelectedItem));
+            cmd.Parameters.AddWithValue("@emp_ID", emp[0]);
             cmd.ExecuteNonQuery();
 
             cn.Close();
-            this.Close();
+            LoadManager();
         }
     }
 }
