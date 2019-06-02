@@ -1,4 +1,5 @@
-﻿namespace ZOO_db
+﻿using System.Drawing;
+namespace ZOO_db
 {
     partial class VetForm
     {
@@ -71,15 +72,16 @@
             // 
             // txtname
             // 
-            this.txtname.Location = new System.Drawing.Point(62, 150);
+            this.txtname.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
+            this.txtname.Location = new System.Drawing.Point(61, 133);
             this.txtname.Name = "txtname";
-            this.txtname.Size = new System.Drawing.Size(109, 27);
+            this.txtname.Size = new System.Drawing.Size(156, 36);
             this.txtname.TabIndex = 4;
             this.txtname.Text = "txtname";
             // 
             // txtlicense
             // 
-            this.txtlicense.Location = new System.Drawing.Point(62, 227);
+            this.txtlicense.Location = new System.Drawing.Point(62, 208);
             this.txtlicense.Name = "txtlicense";
             this.txtlicense.Size = new System.Drawing.Size(68, 27);
             this.txtlicense.TabIndex = 5;
@@ -87,7 +89,7 @@
             // 
             // txtspecialty
             // 
-            this.txtspecialty.Location = new System.Drawing.Point(61, 291);
+            this.txtspecialty.Location = new System.Drawing.Point(61, 276);
             this.txtspecialty.Name = "txtspecialty";
             this.txtspecialty.Size = new System.Drawing.Size(156, 27);
             this.txtspecialty.TabIndex = 6;
@@ -125,7 +127,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(537, 58);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(46, 17);
+            this.label5.Size = new System.Drawing.Size(44, 17);
             this.label5.TabIndex = 11;
             this.label5.Text = "HC ID";
             // 
@@ -134,7 +136,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(589, 58);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(46, 17);
+            this.label6.Size = new System.Drawing.Size(58, 17);
             this.label6.TabIndex = 12;
             this.label6.Text = "Species";
             // 
@@ -143,7 +145,7 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(641, 58);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(46, 17);
+            this.label7.Size = new System.Drawing.Size(45, 17);
             this.label7.TabIndex = 13;
             this.label7.Text = "Name";
             // 

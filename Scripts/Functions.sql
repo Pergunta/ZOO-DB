@@ -1,19 +1,21 @@
 --VETERINARIAN
 
-create procedure zoodb.InsertDelete_Vet(@fname varchar(15), @lname varchar(15), @license_ID char(9), @specialty varchar(20),@StatementType nvarchar(20) = '')
+create procedure zoodb.Insert_Vet(@fname varchar(15), @lname varchar(15), @specialty varchar(20))
 as 
 	BEGIN  
-	IF @StatementType = 'Insert'  
-	BEGIN  
-	insert into zoodb.veterinarian (fname, lname, license_ID, specialty) values(@fname, @lname, @license_ID, @specialty)  
+	insert into zoodb.veterinarian (fname, lname, specialty) values(@fname, @lname, @specialty)  
 	END   
-	else IF @StatementType = 'Delete'  
+
+  
+go
+
+create procedure zoodb.Delete_Vet(@license_ID int)
+as 
 	BEGIN  
 	DELETE FROM zoodb.veterinarian WHERE license_ID = @license_ID 
 	END  
-end  
-go
 
+go
 create function zoodb.getVetList() returns table
 as
 	return(
@@ -36,5 +38,35 @@ as
 									join zoodb.animal a on a.animal_ID = hc.patient_ID
 									join zoodb.species s on a.species = s.species_ID
 									where v.license_ID = @license_ID
+	);
+go
+
+--ZONE
+
+create function zoodb.getZoneList() returns table
+as
+	return(
+	select * from zoodb.zone
+	);
+go
+
+create function zoodb.getZoneManager(@zone_ID int) returns table
+as
+	return(
+	select mgr.fname, mgr.lname, mgr.ID  from zoodb.zone zo 
+								join zoodb.employee mgr on zo.manager_ID = mgr.ID
+								where zo.zone_ID = @zone_ID
+	);
+go
+
+create function zoodb.getZoneEnc(@zone_ID int) returns table
+as
+	return(
+	select enc.enc_number, sp.name, count(a.animal_ID) as animal_count from zoodb.zone zo 
+								join zoodb.enclosure enc on zo.zone_ID = enc.zone_ID
+								join zoodb.species sp on enc.enc_number = sp.enc_number
+								join zoodb.animal a on a.species = sp.species_ID 
+								where zo.zone_ID = 2
+								group by enc.enc_number, sp.name
 	);
 go

@@ -32,18 +32,28 @@ namespace ZOO_db
             return cn.State == ConnectionState.Open;
         }
 
-        private void VeterinarianIUD(String fname, String lname, String license_ID, String specialty, String statementType)
+        private void InsertVet(String fname, String lname, String specialty)
         {
             if (!verifySGBDConnection())
                 return;
 
-            SqlCommand cmd = new SqlCommand("zoodb.InsertDelete_Vet", cn){CommandType = CommandType.StoredProcedure};
+            SqlCommand cmd = new SqlCommand("zoodb.Insert_Vet", cn){CommandType = CommandType.StoredProcedure};
             cmd.Parameters.AddWithValue("@fname",fname);
             cmd.Parameters.AddWithValue("@lname", lname);
-            cmd.Parameters.AddWithValue("@license_ID", license_ID);
             cmd.Parameters.AddWithValue("@specialty", specialty);
-            cmd.Parameters.AddWithValue("@StatementType", statementType);
 
+            cmd.ExecuteNonQuery();
+            cn.Close();
+
+        }
+
+        private void DeleteVet(String license_ID)
+        {
+            if (!verifySGBDConnection())
+                return;
+
+            SqlCommand cmd = new SqlCommand("zoodb.Delete_Vet", cn) { CommandType = CommandType.StoredProcedure };
+            cmd.Parameters.AddWithValue("@license_ID", license_ID);
 
             cmd.ExecuteNonQuery();
             cn.Close();
@@ -57,7 +67,7 @@ namespace ZOO_db
             if (!verifySGBDConnection())
                 return;
 
-            SqlCommand cmd = new SqlCommand("zoodb.getVetList", cn);
+            SqlCommand cmd = new SqlCommand("select * from zoodb.getVetList()", cn);
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
@@ -81,7 +91,7 @@ namespace ZOO_db
                                      MessageBoxButtons.OK);
             if (confirmResult == DialogResult.OK)
             {
-                VeterinarianIUD(txtfname.Text, txtlname.Text, txtlicense.Text, txtspecialty.Text, "Insert");
+                InsertVet(txtfname.Text, txtlname.Text, txtspecialty.Text);
                 ListBoxLoad();
             }
         }
@@ -93,7 +103,7 @@ namespace ZOO_db
                          MessageBoxButtons.OK);
             if (confirmResult == DialogResult.OK)
             {
-                VeterinarianIUD(txtfname.Text, txtlname.Text, txtlicense2.Text, txtspecialty.Text, "Delete");
+                DeleteVet(txtlicense2.Text);
                 ListBoxLoad();
             }
         }

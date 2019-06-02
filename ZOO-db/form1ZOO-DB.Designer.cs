@@ -32,9 +32,10 @@
             this.confToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.veterinarianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadEmployeesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.merchShopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
-            this.merchShopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.zoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,6 +56,7 @@
             this.veterinarianToolStripMenuItem,
             this.loadEmployeesToolStripMenuItem,
             this.merchShopToolStripMenuItem,
+            this.zoneToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.confToolStripMenuItem.Name = "confToolStripMenuItem";
             this.confToolStripMenuItem.Size = new System.Drawing.Size(63, 24);
@@ -74,6 +76,13 @@
             this.loadEmployeesToolStripMenuItem.Text = "Employee";
             this.loadEmployeesToolStripMenuItem.Click += new System.EventHandler(this.loadEmployeesToolStripMenuItem_Click);
             // 
+            // merchShopToolStripMenuItem
+            // 
+            this.merchShopToolStripMenuItem.Name = "merchShopToolStripMenuItem";
+            this.merchShopToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.merchShopToolStripMenuItem.Text = "Merch Shop";
+            this.merchShopToolStripMenuItem.Click += new System.EventHandler(this.MerchShopToolStripMenuItem_Click);
+            // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
@@ -89,12 +98,12 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Toronto in 6";
             // 
-            // merchShopToolStripMenuItem
+            // zoneToolStripMenuItem
             // 
-            this.merchShopToolStripMenuItem.Name = "merchShopToolStripMenuItem";
-            this.merchShopToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
-            this.merchShopToolStripMenuItem.Text = "Merch Shop";
-            this.merchShopToolStripMenuItem.Click += new System.EventHandler(this.MerchShopToolStripMenuItem_Click);
+            this.zoneToolStripMenuItem.Name = "zoneToolStripMenuItem";
+            this.zoneToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.zoneToolStripMenuItem.Text = "Zone";
+            this.zoneToolStripMenuItem.Click += new System.EventHandler(this.zoneToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -121,6 +130,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStripMenuItem veterinarianToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem merchShopToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem zoneToolStripMenuItem;
     }
 }
 

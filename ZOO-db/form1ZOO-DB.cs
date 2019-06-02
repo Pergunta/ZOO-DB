@@ -49,5 +49,15 @@ namespace ZOO_db
             this.Hide();
 
         }
+
+        private void zoneToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new ZoneForm();
+            frm.Location = this.Location;
+            frm.StartPosition = FormStartPosition.Manual;
+            frm.FormClosing += delegate { this.Show(); };
+            frm.Show();
+            this.Hide();
+        }
     }
 }

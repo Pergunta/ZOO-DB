@@ -79,14 +79,14 @@ create table zoodb.animal(
 create table zoodb.veterinarian(
 	fname		varchar(15) not null,
 	lname		varchar(15) not null,
-	license_ID	int		not null,
+	license_ID	INT IDENTITY(1,1),
 	specialty	varchar(20),
 	primary key	(license_ID));
 
 create table zoodb.visitor(
 	fname		varchar(15) not null,
 	lname		varchar(15) not null,
-	email		varchar(20),
+	email		varchar(40),
 	NIF			int		not null,
 	primary key (NIF));
 
@@ -142,6 +142,3 @@ create table zoodb.sponsorship(
 	foreign key	(NIF) references zoodb.visitor(NIF),
 	foreign key	(animal_ID) references zoodb.animal(animal_ID));
 go
-
-alter TABLE zoodb.visitor
-add email varchar(40)

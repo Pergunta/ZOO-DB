@@ -38,8 +38,6 @@ D:\BD\ZOO-DB\ZOO-db\obj\Debug\ZOO_db.VetForm.resources
 D:\BD\ZOO-DB\ZOO-db\obj\Debug\ZOO_db.VetListForm.resources
 C:\Users\JoãoMonteiro\Desktop\BD\ZOO-DB\ZOO-db\obj\Debug\ZOO_db.VetForm.resources
 C:\Users\JoãoMonteiro\Desktop\BD\ZOO-DB\ZOO-db\obj\Debug\ZOO_db.VetListForm.resources
-<<<<<<< Updated upstream
 C:\Users\JoãoMonteiro\Desktop\BD\ZOO-DB\ZOO-db\obj\Debug\ZOO_db.MerchShop.resources
-=======
 D:\BD\ZOO-DB\ZOO-db\obj\Debug\ZOO_db.ZoneForm.resources
->>>>>>> Stashed changes
+D:\BD\ZOO-DB\ZOO-db\obj\Debug\ZOO_db.ZoneForm.resources

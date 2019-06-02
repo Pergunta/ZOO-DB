@@ -228,25 +228,25 @@ insert into  zoodb.purchase (receipt, NIF, product_ID, shop_ID) VALUES
 select * from zoodb.purchase;
 
 --ADD VETERINARIAN
-insert into zoodb.veterinarian (fname, lname, license_ID, specialty) VALUES
-('Steph', 'Curry', 000000001 ,'Veterinary Nutrition' ),
-('Kevin', 'Durant', 000000002 ,'Veterinary Nutrition' ),
-('Klay', 'Thompson', 000000003 ,'Veterinary Nutrition' ),
-('Draymond', 'Green', 000000004 ,'Veterinary Nutrition' ),
-('Andre', 'Igudala', 000000005 ,'Veterinary Nutrition' );
+insert into zoodb.veterinarian (fname, lname, specialty) VALUES
+('Steph', 'Curry', 'Veterinary Nutrition' ),
+('Kevin', 'Durant', 'Veterinary Nutrition' ),
+('Klay', 'Thompson', 'Veterinary Nutrition' ),
+('Draymond', 'Green', 'Veterinary Nutrition' ),
+('Andre', 'Igudala', 'Veterinary Nutrition' );
 select * from zoodb.veterinarian;
 
 --ADD HEALTH CHECK
 insert into zoodb.health_check ( hc_date, vet_ID, patient_ID) VALUES
-( '2015-06-07', 000000001, 1),
-( '2015-06-07', 000000001, 4),
-( '2015-06-07', 000000001, 5),
-( '2015-06-07', 000000002, 20),
-( '2015-06-07', 000000002, 2),
-( '2015-06-07', 000000003, 3),
-( '2015-06-07', 000000004, 6),
-( '2015-06-07', 000000005, 1),
-( '2015-06-07', 000000005, 11);
+( '2015-06-07', 1, 1),
+( '2015-06-07', 1, 4),
+( '2015-06-07', 1, 5),
+( '2015-06-07', 2, 20),
+( '2015-06-07', 2, 2),
+( '2015-06-07', 3, 3),
+( '2015-06-07', 4, 6),
+( '2015-06-07', 5, 1),
+( '2015-06-07', 5, 11);
 select * from zoodb.health_check;
 
 --ADD SUPPORT TEAM

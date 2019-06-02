@@ -24,7 +24,7 @@ namespace ZOO_db
             InitializeComponent();
             getID(vet_string);
             getData();
-            listBoxLoad();
+            listViewLoad();
 
         }
 
@@ -59,7 +59,7 @@ namespace ZOO_db
             cn.Close();
         }
 
-        private void listBoxLoad()
+        private void listViewLoad()
         {
 
             listView1.Items.Clear();
