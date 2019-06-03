@@ -52,6 +52,7 @@
     <Compile Include="ChangeManager.Designer.cs">
       <DependentUpon>ChangeManager.cs</DependentUpon>
     </Compile>
+    <Compile Include="Cashier.cs" />
     <Compile Include="MoveSpecies.cs">
       <SubType>Form</SubType>
     </Compile>

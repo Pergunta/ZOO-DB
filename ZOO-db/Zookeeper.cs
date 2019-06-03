@@ -8,12 +8,13 @@ namespace ZOO_db
 {
     public class Zookeeper : Employee 
     {
+        
         private Int32 emp_ID;
         private String _speciality;
         private Int32 _zone;
 
 
-        public int em_ID
+        public int Emp_ID
         {
             get { return ID; }
             set { ID = value; }
@@ -48,8 +49,19 @@ namespace ZOO_db
             }
         }
 
-        public Zookeeper(String Fname, String Lname, String Birthdate) : base(Fname, Lname, Birthdate)
+
+        public override String ToString()
         {
+            return "Zookeeper "+this.Fname + " " + this.Lname + " " + this.Birthdate +" "+ _speciality +" " +_zone+ " "+ this.ID;
+        }
+        public Zookeeper(int ID ,String Fname, String Lname, String Birthdate) : base(ID ,Fname, Lname, Birthdate)
+        {
+
+        }
+
+        public Zookeeper( String Fname, String Lname, String Birthdate) : base( Fname, Lname, Birthdate)
+        {
+
         }
 
 

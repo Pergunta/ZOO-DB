@@ -70,13 +70,19 @@ namespace ZOO_db
 
         public override String ToString()
         {
-            return _fname + "   " + _lname;
+            return "Employee "+_fname + " " + _lname + " "+ _birthdate+ " " +_ID;
         }
 
         public Employee() : base()
         {
         }
-
+        public Employee(int ID , String Fname, String Lname, String birthdate) : base()
+        {
+            this.ID = ID;
+            this.Fname = Fname;
+            this.Lname = Lname;
+            this.Birthdate = birthdate;
+        }
         public Employee(String Fname, String Lname, String birthdate) : base()
         {
             this.Fname = Fname;

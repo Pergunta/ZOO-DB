@@ -35,10 +35,17 @@ go
 
 --EMPLOYEE
 
+select * from zoodb.employee
+
+drop function zoodb.getEmployeeJob2
+
+
+
+
 create function zoodb.getEmployeeJob(@ID int )returns table 
 as 
 	return(
-	select  e.fname, e.lname, e.birthdate , z.specialty , z.zone  from zoodb.employee e
+	select z.emp_ID, e.fname, e.lname, e.birthdate , z.specialty , z.zone  from zoodb.employee e
 					join zoodb.zookeeper z on z.emp_ID = e.ID
 					where e.ID = @ID
 	)
@@ -54,3 +61,21 @@ as
 
 	)
 go
+
+
+create procedure zoodb.addZookeeper( @zone int , @speciality varchar(20),@ID int)
+as 
+	BEGIN  
+	insert into zoodb.zookeeper(emp_ID, specialty, zone)
+	values(@ID, @speciality, @zone)
+	END   
+go
+
+create procedure zoodb.addCashier(@ID int , @shop_ID int)
+as
+	BEGIN
+	insert into zoodb.cashier(emp_ID, shop_ID)
+	values(@ID, @shop_ID)
+	END   
+go
+
