@@ -59,5 +59,15 @@ namespace ZOO_db
             frm.Show();
             this.Hide();
         }
+
+        private void sponsorshipToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new SponsorshipForm();
+            frm.Location = this.Location;
+            frm.StartPosition = FormStartPosition.Manual;
+            frm.FormClosing += delegate { this.Show(); };
+            frm.Show();
+            this.Hide();
+        }
     }
 }

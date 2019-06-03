@@ -126,7 +126,7 @@ create table zoodb.purchase(
 create table zoodb.exhibit(
 	exhibit_ID	INT IDENTITY(1,1),
 	name		varchar(30)	not null,
-	zone_ID		iNT,
+	zone_ID		int,
 	primary key (exhibit_ID),
 	foreign key (zone_ID) references zoodb.zone(zone_ID));
 
@@ -138,7 +138,7 @@ create table zoodb.goes_to(
 
 create table zoodb.sponsorship(
 	NIF			int		not null,
-	animal_ID	int,
+	animal_ID	int		not null,
 	foreign key	(NIF) references zoodb.visitor(NIF),
 	foreign key	(animal_ID) references zoodb.animal(animal_ID));
 go

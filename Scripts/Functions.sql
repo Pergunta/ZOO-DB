@@ -5,7 +5,6 @@ as
 	BEGIN  
 	insert into zoodb.veterinarian (fname, lname, specialty) values(@fname, @lname, @specialty)  
 	END   
-
   
 go
 
@@ -16,6 +15,7 @@ as
 	END  
 
 go
+
 create function zoodb.getVetList() returns table
 as
 	return(
@@ -33,7 +33,7 @@ go
 create function zoodb.getVetHC(@license_ID int) returns table
 as
 	return(
-	SELECT hc.hc_ID,s.name as species_name ,a.name as animal_name FROM zoodb.veterinarian v 
+	SELECT hc.hc_ID,a.animal_ID,s.name as species_name ,a.name as animal_name FROM zoodb.veterinarian v 
 									join zoodb.health_check hc on v.license_ID = hc.vet_ID 
 									join zoodb.animal a on a.animal_ID = hc.patient_ID
 									join zoodb.species s on a.species = s.species_ID
@@ -110,7 +110,7 @@ go
 create function zoodb.getZoneEncEmpty(@zone_ID int) returns table
 as
 	return(
-	select enc_number from zoodb.getZoneEnc(@zone_ID) func
+	select func.enc_number from zoodb.getZoneEnc(@zone_ID) func
 				where func.name is null
 			 
 	);
@@ -126,16 +126,62 @@ as
 								and enc.zone_ID = @zone_ID);
 go
 
+--ANIMAL
 
---USAR PARA FAZER ADD ZOOKEEPER/CASHIER E EMPLOYEE AO MESMO TEMPO
---CODIGO DO BRUNO PROBABLY SHIT
+create function zoodb.getAnimal(@animal_ID int) returns table
+as
+	return(
+	select a.name,a.animal_ID,sp.name as species_name from zoodb.animal a
+									join zoodb.species sp on sp.species_ID = a.species
+									where animal_ID=@animal_ID
+	);
 go
-create procedure Vinhos.test(@VinhoID int,@Aroma varchar(60), @Descricao varchar(800), @Nome varchar(60))
+
+create function zoodb.getHCST(@hc_ID int) returns table
+as
+	return(
+	select stuff((select '; ' + CONVERT(varchar(10), st.emp_ID)
+		from zoodb.support_team st
+		where st.hc_ID = @hc_ID
+		for xml path('')), 1, 1, '') [support_team]
+
+	);
+go
+
+create function zoodb.getAnimalHC(@animal_ID int) returns table
+as
+	return(
+	select hc.hc_ID, vet.license_ID, vet.fname, vet.lname, func.support_team from zoodb.animal a 
+			join zoodb.health_check hc on hc.patient_ID = a.animal_ID
+			join zoodb.veterinarian vet on vet.license_ID = hc.vet_ID
+			cross apply zoodb.getHCST(hc_ID) func
+			where animal_ID = @animal_ID
+	);
+go
+
+--SPONSORSHIP
+
+create function zoodb.getSponsorshipList() returns table
+as
+	return(
+	select a.animal_ID, a.name, v.NIF, v.fname, v.lname from zoodb.sponsorship sp
+				join zoodb.animal a on sp.animal_ID=a.animal_ID
+				join zoodb.visitor v on v.NIF = sp.NIF
+	);
+go
+
+create procedure zoodb.addSponsorship(@NIF int, @animal_ID int)
 as 
-	declare @CastaID int;
 	BEGIN  
-	insert into Vinhos.Castas(Aroma, Descricao, Nome) values(@Aroma , @Descricao, @Nome) 
-	Set @CastaID=( SELECT max(Vinhos.Castas.ID) FROM Vinhos.Castas);
-	insert into Vinhos.Tem(VinhoId, CastasID) values(@VinhoID , @CastaID) 
-	END                   
+	insert into zoodb.sponsorship (NIF, animal_ID) values (@NIF, @animal_ID)  
+	END   
+  
+go
+
+create procedure zoodb.removeSponsorship(@animal_ID int, @NIF int)
+as 
+	BEGIN  
+	DELETE FROM zoodb.sponsorship WHERE animal_ID = @animal_ID and NIF = @NIF
+	END  
+
 go

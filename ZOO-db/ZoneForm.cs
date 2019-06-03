@@ -80,11 +80,11 @@ namespace ZOO_db
             {
                 if (reader[1].ToString() == "")
                 {
-                    listBox1.Items.Add(reader[0].ToString() + ";    Empty;   " + reader[2].ToString()); 
+                    listBox1.Items.Add(reader[0].ToString() + ":    Empty;   " + reader[2].ToString()); 
                 }
                 else
                 {
-                    listBox1.Items.Add(reader[0].ToString() + ";    " + reader[1].ToString() + ";   " + reader[2].ToString());
+                    listBox1.Items.Add(reader[0].ToString() + ":    " + reader[1].ToString() + ":   " + reader[2].ToString());
                 }
             }
 
@@ -104,7 +104,7 @@ namespace ZOO_db
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                listBox2.Items.Add(reader[0].ToString() + ";    " + reader[1].ToString());
+                listBox2.Items.Add(reader[0].ToString() + ":    " + reader[1].ToString());
             }
 
             cn.Close();
@@ -124,7 +124,7 @@ namespace ZOO_db
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             string item = listBox1.GetItemText(listBox1.SelectedItem);
-            string[] split = item.Split(';');
+            string[] split = item.Split(':');
             enc_number = split[0];
             AnimalListLoad(zone_ID, enc_number);
         }
@@ -150,6 +150,18 @@ namespace ZOO_db
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void listBox2_MouseDoubleClick(object sender, EventArgs e)
+        {
+            string selected = listBox2.GetItemText(listBox2.SelectedItem);
+
+            string[] animal_ID = selected.Split(':');
+            var frm = new AnimalForm(animal_ID[0]);
+            frm.Location = this.Location;
+            frm.StartPosition = FormStartPosition.Manual;
+            frm.FormClosing += delegate { ManagerLoad(zone_ID); };
+            frm.Show();
         }
     }
 }

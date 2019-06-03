@@ -11,13 +11,13 @@ using System.Data.SqlClient;
 
 namespace ZOO_db
 {
-    public partial class VetListForm : Form
+    public partial class SponsorshipForm : Form
     {
         private SqlConnection cn = new SqlConnection("Data Source = tcp:mednat.ieeta.pt\\SQLSERVER,8101 ;" +
                                         "Initial Catalog = p8g8 ;" +
                                         "uid = p8g8 ;" +
                                         "Password = Tudomerda69. ;");
-        public VetListForm()
+        public SponsorshipForm()
         {
             InitializeComponent();
             ListBoxLoad();
@@ -32,28 +32,28 @@ namespace ZOO_db
             return cn.State == ConnectionState.Open;
         }
 
-        private void InsertVet(String fname, String lname, String specialty)
+        private void InsertVet(String NIF, String animal_ID)
         {
             if (!verifySGBDConnection())
                 return;
 
-            SqlCommand cmd = new SqlCommand("zoodb.Insert_Vet", cn){CommandType = CommandType.StoredProcedure};
-            cmd.Parameters.AddWithValue("@fname",fname);
-            cmd.Parameters.AddWithValue("@lname", lname);
-            cmd.Parameters.AddWithValue("@specialty", specialty);
+            SqlCommand cmd = new SqlCommand("zoodb.addSponsorship", cn){CommandType = CommandType.StoredProcedure};
+            cmd.Parameters.AddWithValue("@NIF", NIF);
+            cmd.Parameters.AddWithValue("@animal_ID", animal_ID);
 
             cmd.ExecuteNonQuery();
             cn.Close();
 
         }
 
-        private void DeleteVet(String license_ID)
+        private void DeleteVet(String NIF, String animal_ID)
         {
             if (!verifySGBDConnection())
                 return;
 
-            SqlCommand cmd = new SqlCommand("zoodb.Delete_Vet", cn) { CommandType = CommandType.StoredProcedure };
-            cmd.Parameters.AddWithValue("@license_ID", license_ID);
+            SqlCommand cmd = new SqlCommand("zoodb.removeSponsorship", cn) { CommandType = CommandType.StoredProcedure };
+            cmd.Parameters.AddWithValue("@NIF", NIF);
+            cmd.Parameters.AddWithValue("@animal_ID", animal_ID);
 
             cmd.ExecuteNonQuery();
             cn.Close();
@@ -67,11 +67,12 @@ namespace ZOO_db
             if (!verifySGBDConnection())
                 return;
 
-            SqlCommand cmd = new SqlCommand("select * from zoodb.getVetList()", cn);
+            SqlCommand cmd = new SqlCommand("select * from zoodb.getSponsorshipList()", cn);
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                listBox1.Items.Add(reader[0].ToString() + ":" + reader[1].ToString() + " " + reader[2].ToString());
+                listBox1.Items.Add(reader[0].ToString() + ":                " + reader[1].ToString()
+                                   +";             "+ reader[2].ToString() + ":          " + reader[3].ToString() + " " + reader[4].ToString());
             }
 
             cn.Close();
@@ -86,24 +87,24 @@ namespace ZOO_db
         private void button1_Click(object sender, EventArgs e)
         {
 
-            var confirmResult = MessageBox.Show("Insert Veterinarian",
-                                     "Confirm Insertion",
+            var confirmResult = MessageBox.Show("ADD SPONSORSHIP",
+                                     "Confirm",
                                      MessageBoxButtons.OK);
             if (confirmResult == DialogResult.OK)
             {
-                InsertVet(txtfname.Text, txtlname.Text, txtspecialty.Text);
+                InsertVet(addNIF.Text, addID.Text);
                 ListBoxLoad();
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            var confirmResult = MessageBox.Show("Delete Veterinarian",
-                         "Confirm Deletion",
+            var confirmResult = MessageBox.Show("REMOVE SPONSORSHIP",
+                         "Confirm",
                          MessageBoxButtons.OK);
             if (confirmResult == DialogResult.OK)
             {
-                DeleteVet(txtlicense2.Text);
+                DeleteVet(removeNIF.Text, removeID.Text);
                 ListBoxLoad();
             }
         }
@@ -124,5 +125,6 @@ namespace ZOO_db
         {
             this.Close();
         }
+
     }
 }
