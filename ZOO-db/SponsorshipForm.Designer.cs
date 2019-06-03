@@ -96,7 +96,6 @@
             this.listBox1.Size = new System.Drawing.Size(405, 324);
             this.listBox1.TabIndex = 25;
             this.listBox1.Tag = "";
-            this.listBox1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBox1_MouseDoubleClick);
             // 
             // button2
             // 
@@ -117,7 +116,7 @@
             // 
             // label6
             // 
-            this.label6.Location = new System.Drawing.Point(32, 52);
+            this.label6.Location = new System.Drawing.Point(32, 70);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(182, 17);
             this.label6.TabIndex = 26;

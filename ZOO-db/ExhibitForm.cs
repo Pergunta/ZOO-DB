@@ -11,13 +11,13 @@ using System.Data.SqlClient;
 
 namespace ZOO_db
 {
-    public partial class VetListForm : Form
+    public partial class ExhibitForm : Form
     {
         private SqlConnection cn = new SqlConnection("Data Source = tcp:mednat.ieeta.pt\\SQLSERVER,8101 ;" +
                                         "Initial Catalog = p8g8 ;" +
                                         "uid = p8g8 ;" +
                                         "Password = Tudomerda69. ;");
-        public VetListForm()
+        public ExhibitForm()
         {
             InitializeComponent();
             ListBoxLoad();
@@ -32,28 +32,27 @@ namespace ZOO_db
             return cn.State == ConnectionState.Open;
         }
 
-        private void InsertVet(String fname, String lname, String specialty)
+        private void AddExhibit(String name, String zone_ID)
         {
             if (!verifySGBDConnection())
                 return;
 
-            SqlCommand cmd = new SqlCommand("zoodb.Insert_Vet", cn){CommandType = CommandType.StoredProcedure};
-            cmd.Parameters.AddWithValue("@fname",fname);
-            cmd.Parameters.AddWithValue("@lname", lname);
-            cmd.Parameters.AddWithValue("@specialty", specialty);
+            SqlCommand cmd = new SqlCommand("zoodb.addExhibit", cn){CommandType = CommandType.StoredProcedure};
+            cmd.Parameters.AddWithValue("@name", name);
+            cmd.Parameters.AddWithValue("@zone_ID", zone_ID);
 
             cmd.ExecuteNonQuery();
             cn.Close();
 
         }
 
-        private void DeleteVet(String license_ID)
+        private void RemoveExhibit(String exhibit_ID)
         {
             if (!verifySGBDConnection())
                 return;
 
-            SqlCommand cmd = new SqlCommand("zoodb.Delete_Vet", cn) { CommandType = CommandType.StoredProcedure };
-            cmd.Parameters.AddWithValue("@license_ID", license_ID);
+            SqlCommand cmd = new SqlCommand("zoodb.removeExhibit", cn) { CommandType = CommandType.StoredProcedure };
+            cmd.Parameters.AddWithValue("@exhibit_ID", exhibit_ID);
 
             cmd.ExecuteNonQuery();
             cn.Close();
@@ -67,11 +66,11 @@ namespace ZOO_db
             if (!verifySGBDConnection())
                 return;
 
-            SqlCommand cmd = new SqlCommand("select * from zoodb.getVetList()", cn);
+            SqlCommand cmd = new SqlCommand("select * from zoodb.getExhibitList()", cn);
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                listBox1.Items.Add(reader[0].ToString() + ":        " + reader[1].ToString() + " " + reader[2].ToString());
+                listBox1.Items.Add(reader[0].ToString() + ": " + reader[1].ToString() +" "+ reader[2].ToString() + " " + reader[3].ToString());
             }
 
             cn.Close();
@@ -86,38 +85,28 @@ namespace ZOO_db
         private void button1_Click(object sender, EventArgs e)
         {
 
-            var confirmResult = MessageBox.Show("Insert Veterinarian",
-                                     "Confirm Insertion",
+            var confirmResult = MessageBox.Show("ADD EXHIBIT",
+                                     "Confirm",
                                      MessageBoxButtons.OK);
             if (confirmResult == DialogResult.OK)
             {
-                InsertVet(txtfname.Text, txtlname.Text, txtspecialty.Text);
+                AddExhibit(addname.Text, addID.Text);
                 ListBoxLoad();
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            var confirmResult = MessageBox.Show("Delete Veterinarian",
-                         "Confirm Deletion",
+            string item = listBox1.GetItemText(listBox1.SelectedItem);
+            string[] split = item.Split(':');
+            var confirmResult = MessageBox.Show("REMOVE EXHIBIT",
+                         "Confirm",
                          MessageBoxButtons.OK);
             if (confirmResult == DialogResult.OK)
             {
-                DeleteVet(txtlicense2.Text);
+                RemoveExhibit(split[0]);
                 ListBoxLoad();
             }
-        }
-
-        private void listBox1_MouseDoubleClick(object sender, EventArgs e)
-        {
-
-            string text = listBox1.GetItemText(listBox1.SelectedItem);
-            var frm = new VetForm(text);
-            frm.Location = this.Location;
-            frm.StartPosition = FormStartPosition.Manual;
-            frm.FormClosing += delegate { this.Show(); };
-            frm.Show();
-            this.Hide();
         }
 
         private void button3_Click(object sender, EventArgs e)

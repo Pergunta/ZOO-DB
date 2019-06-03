@@ -98,7 +98,7 @@ namespace ZOO_db
             // 
             // listView1
             // 
-            this.listView1.Location = new System.Drawing.Point(540, 78);
+            this.listView1.Location = new System.Drawing.Point(316, 116);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(190, 231);
             this.listView1.TabIndex = 8;
@@ -117,7 +117,7 @@ namespace ZOO_db
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(364, 78);
+            this.label4.Location = new System.Drawing.Point(313, 66);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(142, 17);
             this.label4.TabIndex = 10;
@@ -126,7 +126,7 @@ namespace ZOO_db
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(537, 58);
+            this.label5.Location = new System.Drawing.Point(313, 96);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(48, 17);
             this.label5.TabIndex = 11;
@@ -135,7 +135,7 @@ namespace ZOO_db
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(649, 58);
+            this.label6.Location = new System.Drawing.Point(425, 96);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(58, 17);
             this.label6.TabIndex = 12;
@@ -144,7 +144,7 @@ namespace ZOO_db
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(704, 58);
+            this.label7.Location = new System.Drawing.Point(480, 96);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(45, 17);
             this.label7.TabIndex = 13;
@@ -152,7 +152,7 @@ namespace ZOO_db
             // 
             // label8
             // 
-            this.label8.Location = new System.Drawing.Point(580, 58);
+            this.label8.Location = new System.Drawing.Point(356, 96);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(73, 17);
             this.label8.TabIndex = 14;
@@ -160,7 +160,7 @@ namespace ZOO_db
             // 
             // VetForm
             // 
-            this.ClientSize = new System.Drawing.Size(908, 450);
+            this.ClientSize = new System.Drawing.Size(607, 402);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);

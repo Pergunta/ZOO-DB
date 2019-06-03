@@ -32,7 +32,7 @@ namespace ZOO_db
             return cn.State == ConnectionState.Open;
         }
 
-        private void InsertVet(String NIF, String animal_ID)
+        private void AddSponsorship(String NIF, String animal_ID)
         {
             if (!verifySGBDConnection())
                 return;
@@ -46,7 +46,7 @@ namespace ZOO_db
 
         }
 
-        private void DeleteVet(String NIF, String animal_ID)
+        private void RemoveSponsorship(String NIF, String animal_ID)
         {
             if (!verifySGBDConnection())
                 return;
@@ -92,7 +92,7 @@ namespace ZOO_db
                                      MessageBoxButtons.OK);
             if (confirmResult == DialogResult.OK)
             {
-                InsertVet(addNIF.Text, addID.Text);
+                AddSponsorship(addNIF.Text, addID.Text);
                 ListBoxLoad();
             }
         }
@@ -104,27 +104,14 @@ namespace ZOO_db
                          MessageBoxButtons.OK);
             if (confirmResult == DialogResult.OK)
             {
-                DeleteVet(removeNIF.Text, removeID.Text);
+                RemoveSponsorship(removeNIF.Text, removeID.Text);
                 ListBoxLoad();
             }
-        }
-
-        private void listBox1_MouseDoubleClick(object sender, EventArgs e)
-        {
-
-            string text = listBox1.GetItemText(listBox1.SelectedItem);
-            var frm = new VetForm(text);
-            frm.Location = this.Location;
-            frm.StartPosition = FormStartPosition.Manual;
-            frm.FormClosing += delegate { this.Show(); };
-            frm.Show();
-            this.Hide();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
     }
 }

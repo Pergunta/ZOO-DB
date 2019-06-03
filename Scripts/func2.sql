@@ -35,11 +35,25 @@ go
 
 --EMPLOYEE
 
-select * from zoodb.employee
+select * from zoodb.cashier
 
 drop function zoodb.getEmployeeJob2
 
+create function zoodb.getEmployeeZK()returns table 
+as 
+	return(
+	select z.emp_ID, e.fname, e.lname from zoodb.employee e
+					join zoodb.zookeeper z on z.emp_ID = e.ID
+	)
+go
 
+create function zoodb.getEmployeeCashier()returns table 
+as 
+	return(
+	select c.emp_ID, e.fname, e.lname from zoodb.employee e
+					join zoodb.cashier c on c.emp_ID = e.ID
+	)
+go
 
 
 create function zoodb.getEmployeeJob(@ID int )returns table 

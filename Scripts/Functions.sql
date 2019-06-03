@@ -185,3 +185,31 @@ as
 	END  
 
 go
+
+--EXHIBIT
+
+create function zoodb.getExhibitList() returns table
+as
+	return(
+	select ex.exhibit_ID, ex.name, ex.zone_ID, count(gt.NIF) as visitor_number from zoodb.exhibit ex
+				left join zoodb.goes_to gt on gt.exhibit_ID = ex.exhibit_ID
+				group by ex.exhibit_ID, ex.name, ex.zone_ID
+	);
+go
+
+create procedure zoodb.addExhibit(@name varchar(30), @zone_ID int)
+as 
+	BEGIN  
+	insert into zoodb.exhibit (name, zone_ID) values (@name, @zone_ID)  
+	END   
+  
+go
+
+create procedure zoodb.removeExhibit(@exhibit_ID int)
+as 
+	BEGIN  
+	DELETE FROM zoodb.exhibit WHERE exhibit_ID = @exhibit_ID
+	END  
+
+go
+

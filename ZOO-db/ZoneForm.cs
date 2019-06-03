@@ -104,7 +104,7 @@ namespace ZOO_db
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                listBox2.Items.Add(reader[0].ToString() + ":    " + reader[1].ToString());
+                listBox2.Items.Add(reader[0].ToString() + ":                    " + reader[1].ToString());
             }
 
             cn.Close();
@@ -162,6 +162,11 @@ namespace ZOO_db
             frm.StartPosition = FormStartPosition.Manual;
             frm.FormClosing += delegate { ManagerLoad(zone_ID); };
             frm.Show();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

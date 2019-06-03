@@ -205,6 +205,7 @@ namespace ZOO_db
 
         private void BackToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            this.Close();
 
         }
 
@@ -259,6 +260,67 @@ namespace ZOO_db
             loadProductsFromstore(Int32.Parse(txtShopID.Text.ToString()));
             // Displays the MessageBox.
             result = MessageBox.Show(message, caption, buttons);
+        }
+        private void loadEmployeesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new InsertEmployee();
+            frm.Location = this.Location;
+            frm.StartPosition = FormStartPosition.Manual;
+            frm.FormClosing += delegate { this.Show(); };
+            frm.Show();
+            this.Hide();
+        }
+
+        private void veterinarianToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new VetListForm();
+            frm.Location = this.Location;
+            frm.StartPosition = FormStartPosition.Manual;
+            frm.FormClosing += delegate { this.Show(); };
+            frm.Show();
+            this.Hide();
+        }
+
+        private void MerchShopToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new MerchShop();
+            frm.Location = this.Location;
+            frm.StartPosition = FormStartPosition.Manual;
+            frm.FormClosing += delegate { this.Show(); };
+            frm.Show();
+            this.Hide();
+
+        }
+
+        private void zoneToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new ZoneForm();
+            frm.Location = this.Location;
+            frm.StartPosition = FormStartPosition.Manual;
+            frm.FormClosing += delegate { this.Show(); };
+            frm.Show();
+            this.Hide();
+        }
+
+        private void sponsorshipToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new SponsorshipForm();
+            frm.Location = this.Location;
+            frm.StartPosition = FormStartPosition.Manual;
+            frm.FormClosing += delegate { this.Show(); };
+            frm.Show();
+            this.Hide();
+        }
+
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

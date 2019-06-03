@@ -70,9 +70,9 @@ create table zoodb.species(
 
 create table zoodb.animal(
 	animal_ID	INT IDENTITY(1,1),
-	name		varchar(15),
+	name		varchar(15) not null,
 	birthdate	date,
-	species		INT,
+	species		INT not null,
 	primary key	(animal_ID),
 	foreign key	(species) references zoodb.species(species_ID));
 

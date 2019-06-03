@@ -45,3 +45,5 @@ D:\BD\ZOO-DB\ZOO-db\obj\Debug\ZOO_db.MoveSpecies.resources
 D:\BD\ZOO-DB\ZOO-db\obj\Debug\ZOO_db.ChangeManager.resources
 D:\BD\ZOO-DB\ZOO-db\obj\Debug\ZOO_db.AnimalForm.resources
 D:\BD\ZOO-DB\ZOO-db\obj\Debug\ZOO_db.SponsorshipForm.resources
+D:\BD\ZOO-DB\ZOO-db\obj\Debug\ZOO_db.ExhibitForm.resources
+D:\BD\ZOO-DB\ZOO-db\obj\Debug\ZOO_db.EmployeeForm.resources

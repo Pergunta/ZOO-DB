@@ -92,11 +92,6 @@ namespace ZOO_db
 
         private void backToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var frm = new Form1();
-            frm.Location = this.Location;
-            frm.StartPosition = FormStartPosition.Manual;
-            frm.FormClosing += delegate { this.Show(); };
-            frm.Show();
             this.Close();
         }
 
@@ -194,13 +189,7 @@ namespace ZOO_db
 
             }
 
-                
-         
-            
-
-
         }
-
 
         private void LoadToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -264,7 +253,7 @@ namespace ZOO_db
                 Zookeeper Z = new Zookeeper(E.ID ,E.Fname,E.Lname,E.Birthdate);
                 Z.Speciality = reader1["specialty"].ToString();
                 Z.Zone = Int32.Parse(reader1["zone"].ToString());
-                listBox1.Items.Add(Z);
+                listBox1.Items.Add(E.ID + "     " + E.Fname + " " + E.Lname + "      Zookeeper");
             }
             cn.Close();
 
@@ -287,7 +276,7 @@ namespace ZOO_db
                 Cashier C= new Cashier(E.ID,E.Fname, E.Lname, E.Birthdate);
                 C.ShopID = Int32.Parse(reader["shop_ID"].ToString());
              
-                listBox1.Items.Add(C);
+                listBox1.Items.Add(E.ID + "     " + E.Fname + " " + E.Lname + "      Cashier");
               
             }
             cn.Close();
@@ -351,5 +340,9 @@ namespace ZOO_db
 
         }
 
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

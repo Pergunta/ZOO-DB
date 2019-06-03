@@ -53,6 +53,12 @@
       <DependentUpon>ChangeManager.cs</DependentUpon>
     </Compile>
     <Compile Include="Cashier.cs" />
+    <Compile Include="EmployeeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmployeeForm.Designer.cs">
+      <DependentUpon>EmployeeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MoveSpecies.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +78,12 @@
     </Compile>
     <Compile Include="AnimalForm.Designer.cs">
       <DependentUpon>AnimalForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExhibitForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExhibitForm.Designer.cs">
+      <DependentUpon>ExhibitForm.cs</DependentUpon>
     </Compile>
     <Compile Include="VetForm.cs">
       <SubType>Form</SubType>
@@ -105,16 +117,22 @@
     </Compile>
     <Compile Include="Zookeeper.cs" />
     <Compile Include="Employee.cs" />
-    <Compile Include="form1ZOO-DB.cs">
+    <Compile Include="ZOO-DB.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="form1ZOO-DB.Designer.cs">
-      <DependentUpon>form1ZOO-DB.cs</DependentUpon>
+    <Compile Include="ZOO-DB.Designer.cs">
+      <DependentUpon>ZOO-DB.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="form1ZOO-DB.resx">
-      <DependentUpon>form1ZOO-DB.cs</DependentUpon>
+    <EmbeddedResource Include="EmployeeForm.resx">
+      <DependentUpon>EmployeeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExhibitForm.resx">
+      <DependentUpon>ExhibitForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ZOO-DB.resx">
+      <DependentUpon>ZOO-DB.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MerchShop.resx">
       <DependentUpon>MerchShop.cs</DependentUpon>
