@@ -87,10 +87,10 @@
             this.button4.TabIndex = 55;
             this.button4.Text = "BACK";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // txtID
             // 
-            this.txtID.Enabled = false;
             this.txtID.Location = new System.Drawing.Point(342, 95);
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(28, 22);
@@ -113,6 +113,7 @@
             this.button3.TabIndex = 52;
             this.button3.Text = "ADD CASHIER";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // txtShopID
             // 
@@ -154,6 +155,7 @@
             this.button2.TabIndex = 47;
             this.button2.Text = "ADD ZOOKEEPER";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // txtSpeciality
             // 
@@ -185,6 +187,7 @@
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(288, 324);
             this.listBox1.TabIndex = 39;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -232,6 +235,7 @@
             this.button1.TabIndex = 37;
             this.button1.Text = "ADD EMPLOYEE";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // EmployeeForm
             // 

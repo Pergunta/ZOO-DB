@@ -55,6 +55,46 @@ as
 	)
 go
 
+create function zoodb.getEmployeeUnref()returns table 
+as 
+	return(
+	select e.ID, e.fname, e.lname from zoodb.employee e
+					where  e.ID not in (select e.ID from zoodb.employee e					
+										join zoodb.cashier c on c.emp_ID = e.ID) 
+										and e.ID not in (select e.ID from zoodb.employee e 
+										join zoodb.zookeeper z on z.emp_ID = e.ID)
+	)
+go
+
+create function zoodb.getUnrefData(@emp_ID int)returns table 
+as 
+	return(
+	select e.ID, e.fname, e.lname, e.birthdate from zoodb.employee e
+					where  e.ID not in (select e.ID from zoodb.employee e					
+										join zoodb.cashier c on c.emp_ID = e.ID) 
+						and e.ID not in (select e.ID from zoodb.employee e 
+										join zoodb.zookeeper z on z.emp_ID = e.ID)
+						and e.ID = @emp_ID
+	)
+go
+
+create function zoodb.getZKData(@emp_ID int) returns table
+as
+	return(
+	select emp.ID, emp.fname, emp.lname, emp.birthdate, z.zone, z.specialty from zoodb.zookeeper z 
+				join zoodb.employee emp on emp.ID = z.emp_ID
+				where z.emp_ID = @emp_ID
+	);
+go
+
+create function zoodb.getCashierData(@emp_ID int) returns table
+as
+	return(
+	select emp.ID, emp.fname, emp.lname, emp.birthdate, c.shop_ID from zoodb.cashier c 
+				join zoodb.employee emp on emp.ID = c.emp_ID
+				where c.emp_ID = @emp_ID
+	);
+go
 
 create function zoodb.getEmployeeJob(@ID int )returns table 
 as 
