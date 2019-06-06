@@ -88,6 +88,7 @@ insert into zoodb.enclosure (zone_ID, enc_number, size) VALUES
 (1,2, 5),
 (1,3, 5),
 (1,4, 7),
+(1,5,2),
 (2,1, 10),
 (2,2, 5),
 (2,3, 10),
