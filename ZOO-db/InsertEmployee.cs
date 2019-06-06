@@ -45,13 +45,14 @@ namespace ZOO_db
         {
             if (!verifySGBDConnection())
                 return;
-            
-            
+
+            try { 
              SqlCommand cmd = new SqlCommand("insert into zoodb.employee (fname, lname, birthdate) VALUES (@fname, @lname, @birthdate);", cn);
              cmd.Parameters.AddWithValue("@fname", E.Fname);
              cmd.Parameters.AddWithValue("@lname", E.Lname);
              cmd.Parameters.AddWithValue("@birthdate", E.Birthdate);
-            string message = "Emplyee added";
+
+    string message = "Emplyee added";
             string caption = "added";
             MessageBoxButtons buttons = MessageBoxButtons.OK;
             DialogResult result;
@@ -61,6 +62,12 @@ namespace ZOO_db
 
 
             cmd.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Employee already exists");
+            }
             cn.Close();
 
         }

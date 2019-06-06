@@ -41,7 +41,6 @@ begin
 	else
 		insert into zoodb.veterinarian(fname, lname, specialty) values
 		(@fname, @lname, @specialty)
-		
 
 end
 go
@@ -64,6 +63,27 @@ begin
 		insert into zoodb.exhibit(name, zone_ID) values
 		(@name, @zone_ID)
 		
+end
+go
+
+--EMPLOYEE
+create trigger zoodb.validEmp on zoodb.employee
+instead of insert
+as 
+begin
+	declare @fname as varchar(15);
+	declare @lname as varchar(15);
+	declare @birthdate as varchar(20);
+	select @fname = fname, @lname = lname, @birthdate = birthdate from inserted;
+	if exists (
+	select *
+	from zoodb.employee emp
+	where emp.fname = @fname and emp.lname = @lname)
+		raiserror('Employee already exists', 16, 1);
+
+	else
+		insert into zoodb.employee(fname, lname, birthdate) values
+		(@fname, @lname, @birthdate)
 
 end
 go
