@@ -1,21 +1,4 @@
 --VETERINARIAN
-
-create procedure zoodb.Insert_Vet(@fname varchar(15), @lname varchar(15), @specialty varchar(20))
-as 
-	BEGIN  
-	insert into zoodb.veterinarian (fname, lname, specialty) values(@fname, @lname, @specialty)  
-	END   
-  
-go
-
-create procedure zoodb.Delete_Vet(@license_ID int)
-as 
-	BEGIN  
-	DELETE FROM zoodb.veterinarian WHERE license_ID = @license_ID 
-	END  
-
-go
-
 create function zoodb.getVetList() returns table
 as
 	return(
@@ -42,14 +25,6 @@ as
 go
 
 --ZONE
-
-create procedure zoodb.changeZoneManager(@zone_ID int, @emp_ID int)
-as
-	update zoodb.zone
-	set manager_ID = @emp_ID
-	where zone_ID = @zone_ID
-go
-
 create function zoodb.getZoneList() returns table
 as
 	return(
@@ -77,16 +52,6 @@ as
 go
 
 --ENCLOSURES
-
-create procedure zoodb.moveSpecies(@zone_ID int , @enc1 int, @enc2 int)
-as
-begin
-	update zoodb.species
-	set enc_number = @enc2
-	where zone_ID = @zone_ID and enc_number = @enc1
-end
-go
-
 create function zoodb.getZoneEnc(@zone_ID int) returns table
 as
 	return(
@@ -124,30 +89,6 @@ as
 								join zoodb.animal a on sp.species_ID = a.species
 								where enc.enc_number = @enc_number
 								and enc.zone_ID = @zone_ID);
-go
-
-create trigger zoodb.validMoveSpecies on zoodb.species
-instead of update
-as
-begin
-	declare @popcount as int;
-	declare @species_ID as int;
-	declare @zone_ID as int;
-	declare @nenc_number as int;
-	declare @oenc_number as int;
-	declare @enc_size as int;
-	select @species_ID = species_ID, @zone_ID = zone_ID, @nenc_number = enc_number from inserted;
-	select @enc_size = enc.size from zoodb.enclosure enc where enc.enc_number = @nenc_number and enc.zone_ID = @zone_ID;
-	select @popcount = count(a.animal_ID) from zoodb.animal a where a.species = @species_ID;
-	select @oenc_number = sp.enc_number from zoodb.species sp where sp.species_ID = @species_ID
-
-	if @popcount > @enc_size
-		raiserror('Enclosure not big enough', 16, 1);
-	else
-		update zoodb.species
-		set enc_number = @nenc_number
-		where zone_ID = @zone_ID and enc_number = @oenc_number;
-end
 go
 
 --ANIMAL
@@ -194,22 +135,6 @@ as
 	);
 go
 
-create procedure zoodb.addSponsorship(@NIF int, @animal_ID int)
-as 
-	BEGIN  
-	insert into zoodb.sponsorship (NIF, animal_ID) values (@NIF, @animal_ID)  
-	END   
-  
-go
-
-create procedure zoodb.removeSponsorship(@animal_ID int, @NIF int)
-as 
-	BEGIN  
-	DELETE FROM zoodb.sponsorship WHERE animal_ID = @animal_ID and NIF = @NIF
-	END  
-
-go
-
 --EXHIBIT
 
 create function zoodb.getExhibitList() returns table
@@ -221,19 +146,91 @@ as
 	);
 go
 
-create procedure zoodb.addExhibit(@name varchar(30), @zone_ID int)
+--EMPLOYEE
+create function zoodb.getEmployeeZK()returns table 
 as 
-	BEGIN  
-	insert into zoodb.exhibit (name, zone_ID) values (@name, @zone_ID)  
-	END   
-  
+	return(
+	select z.emp_ID, e.fname, e.lname from zoodb.employee e
+					join zoodb.zookeeper z on z.emp_ID = e.ID
+	)
 go
 
-create procedure zoodb.removeExhibit(@exhibit_ID int)
+create function zoodb.getEmployeeCashier()returns table 
 as 
-	BEGIN  
-	DELETE FROM zoodb.exhibit WHERE exhibit_ID = @exhibit_ID
-	END  
+	return(
+	select c.emp_ID, e.fname, e.lname from zoodb.employee e
+					join zoodb.cashier c on c.emp_ID = e.ID
+	)
+go
 
+create function zoodb.getEmployeeUnref()returns table 
+as 
+	return(
+	select e.ID, e.fname, e.lname from zoodb.employee e
+					where  e.ID not in (select e.ID from zoodb.employee e					
+										join zoodb.cashier c on c.emp_ID = e.ID) 
+										and e.ID not in (select e.ID from zoodb.employee e 
+										join zoodb.zookeeper z on z.emp_ID = e.ID)
+	)
+go
+
+create function zoodb.getUnrefData(@emp_ID int)returns table 
+as 
+	return(
+	select e.ID, e.fname, e.lname, e.birthdate from zoodb.employee e
+					where  e.ID not in (select e.ID from zoodb.employee e					
+										join zoodb.cashier c on c.emp_ID = e.ID) 
+						and e.ID not in (select e.ID from zoodb.employee e 
+										join zoodb.zookeeper z on z.emp_ID = e.ID)
+						and e.ID = @emp_ID
+	)
+go
+
+create function zoodb.getZKData(@emp_ID int) returns table
+as
+	return(
+	select emp.ID, emp.fname, emp.lname, emp.birthdate, z.zone, z.specialty from zoodb.zookeeper z 
+				join zoodb.employee emp on emp.ID = z.emp_ID
+				where z.emp_ID = @emp_ID
+	);
+go
+
+create function zoodb.getCashierData(@emp_ID int) returns table
+as
+	return(
+	select emp.ID, emp.fname, emp.lname, emp.birthdate, c.shop_ID from zoodb.cashier c 
+				join zoodb.employee emp on emp.ID = c.emp_ID
+				where c.emp_ID = @emp_ID
+	);
+go
+
+create function zoodb.getEmployeeJob(@ID int )returns table 
+as 
+	return(
+	select z.emp_ID, e.fname, e.lname, e.birthdate , z.specialty , z.zone  from zoodb.employee e
+					join zoodb.zookeeper z on z.emp_ID = e.ID
+					where e.ID = @ID
+	)
+go
+
+
+create function zoodb.getEmployeeJob2(@ID int)returns table
+as 
+	return(
+	select e.fname,e.lname,e.birthdate, c.emp_ID , c.shop_ID from zoodb.employee e
+					join zoodb.cashier c on c.emp_ID = e.ID
+					where e.ID = @ID
+
+	)
+go
+
+--MERCH SHOP
+create function zoodb.getShopIDProduct(@shop_ID int)returns table 
+as 
+	return(
+	select  p.name, p.price, p.product_ID , p.quantity from zoodb.merchandise_shop m
+					join zoodb.product p on p.shop_ID = m.shop_ID
+					where m.shop_ID = @shop_ID
+	)
 go
 

@@ -93,13 +93,16 @@ namespace ZOO_db
 
             if (!verifySGBDConnection())
                 return;
-
-            SqlCommand cmd = new SqlCommand("zoodb.moveSpecies", cn) { CommandType = CommandType.StoredProcedure };
-            cmd.Parameters.AddWithValue("@zone_ID", zone_ID);
-            cmd.Parameters.AddWithValue("@enc1", comboBox1.GetItemText(comboBox1.SelectedItem));
-            cmd.Parameters.AddWithValue("@enc2", comboBox2.GetItemText(comboBox2.SelectedItem));
-            cmd.ExecuteNonQuery();
-
+            try
+            {
+                SqlCommand cmd = new SqlCommand("zoodb.moveSpecies", cn) { CommandType = CommandType.StoredProcedure };
+                cmd.Parameters.AddWithValue("@zone_ID", zone_ID);
+                cmd.Parameters.AddWithValue("@enc1", comboBox1.GetItemText(comboBox1.SelectedItem));
+                cmd.Parameters.AddWithValue("@enc2", comboBox2.GetItemText(comboBox2.SelectedItem));
+                cmd.ExecuteNonQuery();
+            }catch(Exception ex) {
+                MessageBox.Show("Enclosure not big enough");
+            }
             cn.Close();
             this.Close();
         }

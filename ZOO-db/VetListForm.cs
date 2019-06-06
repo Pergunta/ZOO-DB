@@ -36,13 +36,20 @@ namespace ZOO_db
         {
             if (!verifySGBDConnection())
                 return;
+            try
+            {
+                SqlCommand cmd = new SqlCommand("zoodb.Insert_Vet", cn) { CommandType = CommandType.StoredProcedure };
+                cmd.Parameters.AddWithValue("@fname", fname);
+                cmd.Parameters.AddWithValue("@lname", lname);
+                cmd.Parameters.AddWithValue("@specialty", specialty);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Veterinarian already exists");
+            }
 
-            SqlCommand cmd = new SqlCommand("zoodb.Insert_Vet", cn){CommandType = CommandType.StoredProcedure};
-            cmd.Parameters.AddWithValue("@fname",fname);
-            cmd.Parameters.AddWithValue("@lname", lname);
-            cmd.Parameters.AddWithValue("@specialty", specialty);
 
-            cmd.ExecuteNonQuery();
             cn.Close();
 
         }

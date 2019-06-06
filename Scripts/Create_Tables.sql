@@ -109,7 +109,7 @@ create table zoodb.product(
 	product_ID	INT IDENTITY(1,1),
 	name		varchar(20)	not null,
 	price		int			not null,
-	shop_ID		int		,
+	shop_ID		int,
 	primary key (product_ID),
 	foreign key	(shop_ID) references zoodb.merchandise_shop(shop_ID));
 
