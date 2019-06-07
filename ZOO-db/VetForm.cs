@@ -13,10 +13,7 @@ namespace ZOO_db
 {
     public partial class VetForm : Form
     {
-        private SqlConnection cn = new SqlConnection("Data Source = tcp:mednat.ieeta.pt\\SQLSERVER,8101 ;" +
-                                "Initial Catalog = p8g8 ;" +
-                                "uid = p8g8 ;" +
-                                "Password = Tudomerda69. ;");
+        private SqlConnection cn = new SqlConnection(DBConnectionString.ConnectionString);
         private String vet_ID = "";
 
         public VetForm(String vet_string)

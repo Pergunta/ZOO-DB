@@ -53,6 +53,7 @@
       <DependentUpon>ChangeManager.cs</DependentUpon>
     </Compile>
     <Compile Include="Cashier.cs" />
+    <Compile Include="DBConnectionString.cs" />
     <Compile Include="EmployeeForm.cs">
       <SubType>Form</SubType>
     </Compile>

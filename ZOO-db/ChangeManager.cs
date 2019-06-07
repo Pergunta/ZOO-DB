@@ -14,10 +14,7 @@ namespace ZOO_db
     public partial class ChangeManager : Form
     {
         private string zone_ID = "0";
-        private SqlConnection cn = new SqlConnection("Data Source = tcp:mednat.ieeta.pt\\SQLSERVER,8101 ;" +
-                "Initial Catalog = p8g8 ;" +
-                "uid = p8g8 ;" +
-                "Password = Tudomerda69. ;");
+        private SqlConnection cn = new SqlConnection(DBConnectionString.ConnectionString);
 
         public ChangeManager(String ID)
         {
