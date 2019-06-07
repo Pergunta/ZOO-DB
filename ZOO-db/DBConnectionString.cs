@@ -13,8 +13,8 @@ namespace ZOO_db
 
         private static String _connection = "Data Source = tcp:mednat.ieeta.pt\\SQLSERVER,8101 ;" +
                                 "Initial Catalog = p8g8 ;" +
-                                "uid = p8g8 ;" +
-                                "Password = Tudomerda69. ;";
+                                "uid = ;" +
+                                "Password = ;";
 
         public static String ConnectionString
         {
